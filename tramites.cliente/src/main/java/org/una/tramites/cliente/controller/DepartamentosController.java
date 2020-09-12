@@ -27,7 +27,7 @@ public class DepartamentosController implements Initializable {
     @FXML
     private Button botonBorrar;
     @FXML
-    private TableView<?> tablaDepartamentos;
+    private TableView tablaDepartamentos;
     @FXML
     private Button botonAgregar;
     @FXML

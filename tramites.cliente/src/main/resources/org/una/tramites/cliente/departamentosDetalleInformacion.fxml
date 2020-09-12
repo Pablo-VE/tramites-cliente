@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="509.0" prefWidth="514.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="org.una.tramites.cliente.controller.DetalleInformacionController">
+<AnchorPane id="AnchorPane" prefHeight="509.0" prefWidth="514.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="org.una.tramites.cliente.controller.DepartamentosDetalleInformacionController">
    <children>
       <Label layoutX="91.0" layoutY="70.0" text="Información de Departamentos" />
       <Label layoutX="91.0" layoutY="281.0" text="Estado:" />

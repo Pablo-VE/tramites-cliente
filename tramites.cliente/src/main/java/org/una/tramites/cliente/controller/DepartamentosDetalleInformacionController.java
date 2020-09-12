@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
  *
  * @author Jeffry
  */
-public class DetalleInformacionController implements Initializable {
+public class DepartamentosDetalleInformacionController implements Initializable {
 
     @FXML
     private TextField txtId;
