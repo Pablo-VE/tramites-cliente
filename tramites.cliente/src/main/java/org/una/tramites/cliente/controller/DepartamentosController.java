@@ -7,7 +7,11 @@ package org.una.tramites.cliente.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -15,6 +19,19 @@ import javafx.fxml.Initializable;
  * @author Jeffry
  */
 public class DepartamentosController implements Initializable {
+
+    @FXML
+    private TextField textBuscar;
+    @FXML
+    private Button botonBuscar;
+    @FXML
+    private Button botonBorrar;
+    @FXML
+    private TableView<?> tablaDepartamentos;
+    @FXML
+    private Button botonAgregar;
+    @FXML
+    private Button botonCerrar;
 
     /**
      * Initializes the controller class.
