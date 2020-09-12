@@ -9,7 +9,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import org.una.tramites.cliente.dto.AuthenticationResponse;
+import org.una.tramites.cliente.dto.UsuarioDTO;
+import org.una.tramites.cliente.util.AppContext;
 
 /**
  * FXML Controller class
@@ -38,9 +42,19 @@ public class DashboardController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    UsuarioDTO usuarioLoggeado = new UsuarioDTO();
+    AuthenticationResponse atResponse = new AuthenticationResponse();
+    @FXML
+    private Menu TituloMenuUsuarios;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        atResponse = (AuthenticationResponse) AppContext.getInstance().get("UsuarioAutenticado");
+        if(atResponse!=null){
+            usuarioLoggeado = atResponse.getUsuario();
+            
+            TituloMenuUsuarios.setText("Usuario: "+usuarioLoggeado.getNombreCompleto());
+        }
     }    
     
 }
