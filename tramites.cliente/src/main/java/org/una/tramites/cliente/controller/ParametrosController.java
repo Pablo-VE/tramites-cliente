@@ -18,20 +18,20 @@ import javafx.scene.control.TextField;
  *
  * @author Jeffry
  */
-public class DepartamentosController implements Initializable {
+public class ParametrosController implements Initializable {
 
     @FXML
-    private TextField textBuscar;
+    private TextField txtBuscar;
     @FXML
-    private Button botonBuscar;
+    private Button btnBuscar;
     @FXML
-    private Button botonBorrar;
+    private Button btnBorrar;
     @FXML
-    private TableView tablaDepartamentos;
+    private TableView tbParametros;
     @FXML
-    private Button botonAgregar;
+    private Button btnAgregar;
     @FXML
-    private Button botonCerrar;
+    private Button btnCerrar;
 
     /**
      * Initializes the controller class.

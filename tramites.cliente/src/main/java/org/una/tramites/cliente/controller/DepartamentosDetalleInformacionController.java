@@ -10,7 +10,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -18,20 +19,22 @@ import javafx.scene.control.TextField;
  *
  * @author Jeffry
  */
-public class DepartamentosController implements Initializable {
+public class DepartamentosDetalleInformacionController implements Initializable {
 
     @FXML
-    private TextField textBuscar;
+    private TextField txtId;
     @FXML
-    private Button botonBuscar;
+    private TextField txtNombre;
     @FXML
-    private Button botonBorrar;
+    private ComboBox cmbEstado;
     @FXML
-    private TableView tablaDepartamentos;
+    private Label lblFechaCreacion;
     @FXML
-    private Button botonAgregar;
+    private Label lblFechaModificacion;
     @FXML
-    private Button botonCerrar;
+    private Button btnCancelar;
+    @FXML
+    private Button btnGuardar;
 
     /**
      * Initializes the controller class.

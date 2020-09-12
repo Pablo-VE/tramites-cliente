@@ -6,4 +6,8 @@
 *.class
 
 
+
 tramites.cliente/target/classes/org/una/tramites/cliente/App.class
+
+*.class
+
