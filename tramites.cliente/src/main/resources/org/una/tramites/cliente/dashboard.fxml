@@ -4,6 +4,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.DashboardController">
    <top>
@@ -11,16 +12,16 @@
         <menus>
           <Menu mnemonicParsing="false" text="Información">
             <items>
-              <MenuItem fx:id="menuDepartamentos" mnemonicParsing="false" text="Departamentos" />
-                  <MenuItem fx:id="menuTiposTramites" mnemonicParsing="false" text="Tipos de Trámites" />
+              <MenuItem fx:id="menuDepartamentos" mnemonicParsing="false" onAction="#actDepartamentos" text="Departamentos" />
+                  <MenuItem fx:id="menuTiposTramites" mnemonicParsing="false" onAction="#actTiposTramites" text="Tipos de Trámites" />
                   <MenuItem fx:id="menuDisenoTramites" mnemonicParsing="false" text="Diseño de Trámites" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Administración">
             <items>
-              <MenuItem fx:id="menuPermisos" mnemonicParsing="false" text="Permisos" />
-                  <MenuItem fx:id="menuUsuarios" mnemonicParsing="false" text="Usuarios" />
-                  <MenuItem fx:id="menuParametros" mnemonicParsing="false" text="Parámetros" />
+              <MenuItem fx:id="menuPermisos" mnemonicParsing="false" onAction="#actPermisos" text="Permisos" />
+                  <MenuItem fx:id="menuUsuarios" mnemonicParsing="false" onAction="#actUsuarios" text="Usuarios" />
+                  <MenuItem fx:id="menuParametros" mnemonicParsing="false" onAction="#actParametros" text="Parámetros" />
             </items>
           </Menu>
           <Menu fx:id="TituloMenuUsuarios" mnemonicParsing="false" text="Usuario (Nombre)">
@@ -32,4 +33,7 @@
         </menus>
       </MenuBar>
    </top>
+   <center>
+      <StackPane fx:id="Contenedor" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

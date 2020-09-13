@@ -38,7 +38,7 @@ public class LoginController implements Initializable {
     
     UsuarioService usuService = new UsuarioService();
     @FXML
-    private Button btningresar;
+    private Button btnIngresar;
 
     /**
      * Initializes the controller class.
@@ -59,7 +59,9 @@ public class LoginController implements Initializable {
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();
-               // Stage sc = new Stage(btningresar.getScene().getWindow());
+                
+                Stage stage2 = (Stage) btnIngresar.getScene().getWindow();
+                stage2.close();
             }else{
                 Mensaje.showAndWait(Alert.AlertType.ERROR, "Ingreso de usuario", "Ha surgido un error, intenta más tarde");
             }

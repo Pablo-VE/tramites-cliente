@@ -15,11 +15,11 @@
             <Image url="@../../../../imagenes/fondo.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="botonIniciar" layoutX="342.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Iniciar" />
-      <TextField fx:id="textCedula" layoutX="249.0" layoutY="168.0" prefHeight="25.0" prefWidth="208.0" />
+      <Button fx:id="btnIngresar" layoutX="342.0" layoutY="315.0" mnemonicParsing="false" onAction="#actIngresar" prefHeight="25.0" prefWidth="118.0" text="Iniciar" />
+      <TextField fx:id="txtUsuario" layoutX="249.0" layoutY="168.0" prefHeight="25.0" prefWidth="208.0" />
       <Label layoutX="170.0" layoutY="172.0" text="Cédula:" />
       <Label layoutX="170.0" layoutY="253.0" text="Contraseña:" />
-      <PasswordField fx:id="textContrasena" layoutX="249.0" layoutY="249.0" prefHeight="25.0" prefWidth="208.0" />
+      <PasswordField fx:id="txtContrasena" layoutX="249.0" layoutY="249.0" prefHeight="25.0" prefWidth="208.0" />
       <Label layoutX="256.0" layoutY="66.0" text="Bienvenido al sistema" />
       <Label layoutX="232.0" layoutY="107.0" text="Por favor ingrese sus credenciales" />
    </children>
