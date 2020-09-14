@@ -5,6 +5,7 @@
  */
 package org.una.tramites.cliente.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.json.bind.annotation.JsonbDateFormat;
@@ -23,7 +24,7 @@ public class PermisoDTO {
     private Date fechaModificacion;
     private boolean estado; 
     
-    private List<PermisoOtorgadoDTO> permisosOtorgados;
+    private List<PermisoOtorgadoDTO> permisosOtorgados = new ArrayList<>();
 
     public PermisoDTO() {
     }
