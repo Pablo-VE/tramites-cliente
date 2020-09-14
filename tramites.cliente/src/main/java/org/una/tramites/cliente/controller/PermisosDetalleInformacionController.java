@@ -7,6 +7,7 @@ package org.una.tramites.cliente.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -24,17 +25,19 @@ public class PermisosDetalleInformacionController implements Initializable {
     @FXML
     private TextField txtId;
     @FXML
-    private TextField txtNombre;
-    @FXML
-    private ComboBox<?> cmbEstado;
+    private ComboBox<String> cmbEstado;
     @FXML
     private Label lblFechaCreacion;
     @FXML
     private Label lblFechaModificacion;
     @FXML
-    private Button btnCancelar;
-    @FXML
     private Button btnGuardar;
+    @FXML
+    private TextField txtCodigo;
+    @FXML
+    private Button btnAtras;
+    @FXML
+    private TextField txtDescripcion;
 
     /**
      * Initializes the controller class.
@@ -43,5 +46,17 @@ public class PermisosDetalleInformacionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void actEstado(ActionEvent event) {
+    }
+
+    @FXML
+    private void actAtras(ActionEvent event) {
+    }
+
+    @FXML
+    private void actGuardar(ActionEvent event) {
+    }
     
 }
