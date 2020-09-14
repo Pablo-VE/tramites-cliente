@@ -69,7 +69,7 @@ public class UsuarioDTO {
         this.cedula = cedula;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
@@ -93,7 +93,7 @@ public class UsuarioDTO {
         this.fechaModificacion = fechaModificacion;
     }
 
-    public boolean isEsJefe() {
+    public boolean getEsJefe() {
         return esJefe;
     }
 

@@ -5,13 +5,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.UsuariosAutorizacionesController">
+<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.UsuariosAutorizacionesController">
    <children>
       <TableView fx:id="tbAutorizaaciones" layoutX="14.0" layoutY="14.0" prefHeight="239.0" prefWidth="601.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
       <Button fx:id="btnCancelar" layoutX="14.0" layoutY="265.0" mnemonicParsing="false" onAction="#actCancelar" prefHeight="25.0" prefWidth="85.0" text="Cancelar" />
       <Button fx:id="btnLimpiar" layoutX="111.0" layoutY="265.0" mnemonicParsing="false" onAction="#actLimpiar" prefHeight="25.0" prefWidth="85.0" text="Limpiar" />
