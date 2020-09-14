@@ -95,6 +95,9 @@ public class DepartamentoDTO {
         this.tramitesTipos = tramitesTipos;
     }
 
-    
+    @Override
+    public String toString(){
+       return id+"-"+nombre; 
+    }
     
 }

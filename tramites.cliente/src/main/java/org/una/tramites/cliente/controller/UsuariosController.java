@@ -15,9 +15,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import org.una.tramites.cliente.App;
+import org.una.tramites.cliente.dto.UsuarioDTO;
+import org.una.tramites.cliente.util.AppContext;
 
 /**
  * FXML Controller class
@@ -27,18 +30,6 @@ import org.una.tramites.cliente.App;
 public class UsuariosController implements Initializable {
 
     @FXML
-    private TextField txtBuscar;
-    @FXML
-    private Button btnBuscar;
-    @FXML
-    private Button btnBorrar;
-    @FXML
-    private Button btnGuardar;
-    @FXML
-    private Button btnCancelar;
-    @FXML
-    private Button btnLimpiar;
-    @FXML
     private Button btnInformacion;
     @FXML
     private Button btnAutorizaciones;
@@ -47,40 +38,35 @@ public class UsuariosController implements Initializable {
     @FXML
     private StackPane contenedor;
     @FXML
-    private ComboBox<String> cmbTipoBusqueda;
+    private Label lblUsuario;
+    @FXML
+    private Label lblCedula;
 
     /**
      * Initializes the controller class.
      */
+    private String modalidad;
+    UsuarioDTO usuario = new UsuarioDTO();
+    @FXML
+    private Button btnVolver;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        cmbTipoBusqueda.getItems().add("Id");
-        cmbTipoBusqueda.getItems().add("Nombre");
+        modalidad = (String) AppContext.getInstance().get("ModalidadUsuarios");
+        
+        if(modalidad.equals("Ver")||modalidad.equals("Modificar")){
+            usuario = (UsuarioDTO) AppContext.getInstance().get("UsuarioEnCuestion");
+            lblUsuario.setText(usuario.getNombreCompleto());
+            lblCedula.setText(usuario.getCedula());
+        }
     }    
 
-    @FXML
-    private void actBuscar(ActionEvent event) {
-    }
 
     @FXML
-    private void actBorrar(ActionEvent event) {
-    }
-
-    @FXML
-    private void actGuardar(ActionEvent event) {
-    }
-
-    @FXML
-    private void actCancelar(ActionEvent event) {
-    }
-
-    @FXML
-    private void actLimpiar(ActionEvent event) {
-    }
-
-    @FXML
-    private void actInformacion(ActionEvent event) {
+    private void actInformacion(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(App.class.getResource("usuariosInformacion" + ".fxml"));
+        contenedor.getChildren().clear();
+        contenedor.getChildren().add(root);
     }
 
     @FXML
@@ -95,6 +81,14 @@ public class UsuariosController implements Initializable {
         Parent root = FXMLLoader.load(App.class.getResource("usuariosContrasena" + ".fxml"));
         contenedor.getChildren().clear();
         contenedor.getChildren().add(root);
+    }
+
+    @FXML
+    private void actVolver(ActionEvent event) throws IOException {
+        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+        Parent root = FXMLLoader.load(App.class.getResource("usuariosPrincipal" + ".fxml"));
+        Contenedor.getChildren().clear();
+        Contenedor.getChildren().add(root);
     }
     
 }

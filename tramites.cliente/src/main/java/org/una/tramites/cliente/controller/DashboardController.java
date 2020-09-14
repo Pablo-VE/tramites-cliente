@@ -84,7 +84,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void actUsuarios(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(App.class.getResource("usuarios" + ".fxml"));
+        Parent root = FXMLLoader.load(App.class.getResource("usuariosPrincipal" + ".fxml"));
         Contenedor.getChildren().clear();
         Contenedor.getChildren().add(root);
     }
