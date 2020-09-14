@@ -67,8 +67,8 @@ public class PermisosController implements Initializable {
         opciones.add("Por cédula");
         cbxTipoBusqueda.getItems().clear();
         cbxTipoBusqueda.getItems().addAll(opciones);
-       // cargarPermisosTodos();
-        cargarPermisosId(Long.valueOf(1));
+       //cargarPermisosTodos();
+       // cargarPermisosId(Long.valueOf(1));
         
         tbPermisos.setRowFactory( tv -> {
             TableRow<PermisoDTO> row = new TableRow();
@@ -136,7 +136,22 @@ public class PermisosController implements Initializable {
         Contenedor.getChildren().clear();
         Contenedor.getChildren().add(root);
     }
-
+        
+    public void cargarDepartamentosEstado(String esta){
+        boolean estado=true;
+        if(esta.equals("activo")||esta.equals("Activo")){
+            estado = true;
+        }else{
+            if(esta.equals("inactivo")||esta.equals("Inactivo")){
+                estado = false;
+            }
+        }
+        ArrayList<PermisoDTO> permisos = new ArrayList<PermisoDTO>();
+        Respuesta res = perService.getPermisoByEstado(estado);
+        permisos=(ArrayList<PermisoDTO>) res.getResultado("Permisos");
+        llenarTabla(permisos);
+    }
+      
     @FXML
     private void actBuscar(ActionEvent event) {
     }

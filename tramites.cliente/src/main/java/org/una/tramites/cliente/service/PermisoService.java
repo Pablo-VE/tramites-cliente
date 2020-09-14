@@ -111,4 +111,24 @@ public class PermisoService {
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }
+    
+    
+        public Respuesta getPermisoByEstado(Boolean estado){
+        try{
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("estado", estado);
+            Request request = new Request("permisos/estado", "/{estado}", parametros);
+            request.get();
+            if(request.isError()){
+                return new Respuesta(false, request.getError(), "Error al obtener los departamentos");
+            }
+            List<PermisoDTO> result = (List<PermisoDTO>) request.readEntity(new GenericType<List<PermisoDTO>>(){});
+            return new Respuesta(true, "Permisos",result);
+        }catch(Exception ex){
+            return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
+        }
+    }
+    
+    
 }
+
