@@ -16,26 +16,28 @@ import javax.json.bind.annotation.JsonbDateFormat;
 public class PermisoDTO {
     private Long id; 
     private String codigo;
-    private String descripcion;
+    private String descripcion; 
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date fechaRegistro; 
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date fechaModificacion;
     private boolean estado; 
+    
     private List<PermisoOtorgadoDTO> permisosOtorgados;
 
     public PermisoDTO() {
     }
 
-    public PermisoDTO(Long id, String codigo, String descripcion, Date fechaRegistro, Date fechaModificacion, boolean estado, List<PermisoOtorgadoDTO> permisosOtorgados) {
+    public PermisoDTO(Long id, String codigo, String descripcion, Date fechaRegistro, Date fechaModificacion, boolean estado) {
         this.id = id;
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.fechaRegistro = fechaRegistro;
         this.fechaModificacion = fechaModificacion;
         this.estado = estado;
-        this.permisosOtorgados = permisosOtorgados;
     }
+    
+    
 
     public Long getId() {
         return id;
@@ -77,7 +79,7 @@ public class PermisoDTO {
         this.fechaModificacion = fechaModificacion;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 

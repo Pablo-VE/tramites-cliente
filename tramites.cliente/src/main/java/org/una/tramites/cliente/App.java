@@ -21,6 +21,7 @@ public class App extends Application {
         Parent root = FXMLLoader.load(App.class.getResource("login" + ".fxml"));
         
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("estilo.css");
         stage.setScene(scene);
         stage.show();
 
