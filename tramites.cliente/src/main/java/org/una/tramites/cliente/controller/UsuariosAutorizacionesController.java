@@ -12,29 +12,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Jeffry
  */
-public class DisenoTramitesController implements Initializable {
+public class UsuariosAutorizacionesController implements Initializable {
 
     @FXML
-    private TextField txtNombre;
-    @FXML
-    private Button btnBuscar;
-    @FXML
-    private Button btnBorrar;
-    @FXML
-    private TableView tbTramite;
-    @FXML
-    private Button btnVariaciones;
-    @FXML
-    private Button btnRequisitos;
+    private TableView<?> tbAutorizaaciones;
     @FXML
     private Button btnCancelar;
+    @FXML
+    private Button btnLimpiar;
     @FXML
     private Button btnGuardar;
 
@@ -47,23 +38,11 @@ public class DisenoTramitesController implements Initializable {
     }    
 
     @FXML
-    private void actBuscar(ActionEvent event) {
-    }
-
-    @FXML
-    private void actBorrar(ActionEvent event) {
-    }
-
-    @FXML
-    private void actVerVariaciones(ActionEvent event) {
-    }
-
-    @FXML
-    private void actVerRequisitos(ActionEvent event) {
-    }
-
-    @FXML
     private void actCancelar(ActionEvent event) {
+    }
+
+    @FXML
+    private void actLimpiar(ActionEvent event) {
     }
 
     @FXML

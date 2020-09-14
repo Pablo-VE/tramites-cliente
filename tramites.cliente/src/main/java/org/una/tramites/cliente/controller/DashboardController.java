@@ -7,20 +7,27 @@ package org.una.tramites.cliente.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.AuthenticationResponse;
 import org.una.tramites.cliente.dto.UsuarioDTO;
 import org.una.tramites.cliente.util.AppContext;
+import proyectotitan.util.Mensaje;
 
 /**
  * FXML Controller class
@@ -41,8 +48,6 @@ public class DashboardController implements Initializable {
     private MenuItem menuUsuarios;
     @FXML
     private MenuItem menuParametros;
-    @FXML
-    private MenuItem menuCambiarUsuario;
     @FXML
     private MenuItem menuCerrarSesion;
 
@@ -78,7 +83,10 @@ public class DashboardController implements Initializable {
     }
 
     @FXML
-    private void actUsuarios(ActionEvent event) {
+    private void actUsuarios(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(App.class.getResource("usuarios" + ".fxml"));
+        Contenedor.getChildren().clear();
+        Contenedor.getChildren().add(root);
     }
 
     @FXML
@@ -97,6 +105,32 @@ public class DashboardController implements Initializable {
         Parent root = FXMLLoader.load(App.class.getResource("tiposTramites" + ".fxml"));
         Contenedor.getChildren().clear();
         Contenedor.getChildren().add(root);
+    }
+
+    @FXML
+    private void actDisenoTramites(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(App.class.getResource("disenoTramites" + ".fxml"));
+        Contenedor.getChildren().clear();
+        Contenedor.getChildren().add(root);
+    }
+
+    @FXML
+    private void actCerrarSesion(ActionEvent event) throws IOException {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setContentText("¿Está seguro que desea salir?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Parent root = FXMLLoader.load(App.class.getResource("login" + ".fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage2 = (Stage) Contenedor.getScene().getWindow();
+            stage2.close();
+        }
     }
     
 }

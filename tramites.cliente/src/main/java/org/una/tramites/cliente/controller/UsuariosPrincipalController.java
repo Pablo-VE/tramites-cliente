@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -19,24 +20,28 @@ import javafx.scene.control.TextField;
  *
  * @author Jeffry
  */
-public class DisenoTramitesController implements Initializable {
+public class UsuariosPrincipalController implements Initializable {
 
     @FXML
-    private TextField txtNombre;
+    private TextField txtBuscar;
     @FXML
     private Button btnBuscar;
     @FXML
     private Button btnBorrar;
     @FXML
-    private TableView tbTramite;
+    private TableView tbUsuarios;
     @FXML
-    private Button btnVariaciones;
+    private ComboBox<String> cmbTipoBusqueda;
     @FXML
-    private Button btnRequisitos;
+    private Button btnVolver;
     @FXML
-    private Button btnCancelar;
+    private Button btnVer;
     @FXML
-    private Button btnGuardar;
+    private Button btnAgregar;
+    @FXML
+    private Button btnModificar;
+
+   
 
     /**
      * Initializes the controller class.
@@ -55,19 +60,21 @@ public class DisenoTramitesController implements Initializable {
     }
 
     @FXML
-    private void actVerVariaciones(ActionEvent event) {
+    private void actVolver(ActionEvent event) {
     }
 
     @FXML
-    private void actVerRequisitos(ActionEvent event) {
+    private void actVer(ActionEvent event) {
     }
 
     @FXML
-    private void actCancelar(ActionEvent event) {
+    private void actAgregar(ActionEvent event) {
     }
 
     @FXML
-    private void actGuardar(ActionEvent event) {
+    private void actModificar(ActionEvent event) {
     }
+
+    
     
 }

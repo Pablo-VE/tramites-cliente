@@ -14,7 +14,7 @@
             <items>
               <MenuItem fx:id="menuDepartamentos" mnemonicParsing="false" onAction="#actDepartamentos" text="Departamentos" />
                   <MenuItem fx:id="menuTiposTramites" mnemonicParsing="false" onAction="#actTiposTramites" text="Tipos de Trámites" />
-                  <MenuItem fx:id="menuDisenoTramites" mnemonicParsing="false" text="Diseño de Trámites" />
+                  <MenuItem fx:id="menuDisenoTramites" mnemonicParsing="false" onAction="#actDisenoTramites" text="Diseño de Trámites" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Administración">
@@ -26,8 +26,7 @@
           </Menu>
           <Menu fx:id="TituloMenuUsuarios" mnemonicParsing="false" text="Usuario (Nombre)">
             <items>
-              <MenuItem fx:id="menuCambiarUsuario" mnemonicParsing="false" text="Cambiar de Usuario" />
-                  <MenuItem fx:id="menuCerrarSesion" mnemonicParsing="false" text="Cerrar Sesión" />
+                  <MenuItem fx:id="menuCerrarSesion" mnemonicParsing="false" onAction="#actCerrarSesion" text="Cerrar Sesión" />
             </items>
           </Menu>
         </menus>
