@@ -71,7 +71,10 @@ public class DashboardController implements Initializable {
     }    
 
     @FXML
-    private void actPermisos(ActionEvent event) {
+    private void actPermisos(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(App.class.getResource("permisos" + ".fxml"));
+        Contenedor.getChildren().clear();
+        Contenedor.getChildren().add(root);
     }
 
     @FXML
@@ -84,13 +87,16 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void actDepartamentos(ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(App.class.getResource("departamentos" + ".fxml"));
-         Contenedor.getChildren().clear();
-         Contenedor.getChildren().add(root);
+        Parent root = FXMLLoader.load(App.class.getResource("departamentos" + ".fxml"));
+        Contenedor.getChildren().clear();
+        Contenedor.getChildren().add(root);
     }
 
     @FXML
-    private void actTiposTramites(ActionEvent event) {
+    private void actTiposTramites(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(App.class.getResource("tiposTramites" + ".fxml"));
+        Contenedor.getChildren().clear();
+        Contenedor.getChildren().add(root);
     }
     
 }
