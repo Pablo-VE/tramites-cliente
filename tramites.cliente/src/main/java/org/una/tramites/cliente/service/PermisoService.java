@@ -22,15 +22,16 @@ import org.una.tramites.cliente.util.Respuesta;
 public class PermisoService {
     public Respuesta getAll(){
         try{
-            Request request = new Request("permisos");
+            Request request = new Request("permisos/");
             request.get();
             if(request.isError()){
+                System.out.println("Error permisos:¨"+request.getError());
                 return new Respuesta(false, request.getError(), "Error al obtener todos los permisos");
             }
             List<PermisoDTO> result = (List<PermisoDTO>) request.readEntity(new GenericType<List<PermisoDTO>>(){});
             return new Respuesta(true, "Permisos",result);
         }catch(Exception ex){
-
+            System.out.println("Error permisos:¨"+ex.getMessage());
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }
