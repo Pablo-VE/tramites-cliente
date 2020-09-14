@@ -22,6 +22,9 @@ public class DepartamentoDTO {
     private Date fechaRegistro; 
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date fechaModificacion;
+    
+    
+    
     private List<UsuarioDTO> usuarios = new ArrayList<>();
     private List<TramiteTipoDTO> tramitesTipos = new ArrayList<>();
 

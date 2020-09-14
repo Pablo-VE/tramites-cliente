@@ -67,8 +67,8 @@ public class PermisosController implements Initializable {
         opciones.add("Por cédula");
         cbxTipoBusqueda.getItems().clear();
         cbxTipoBusqueda.getItems().addAll(opciones);
-        cargarPermisosTodos();
-        
+       // cargarPermisosTodos();
+        cargarPermisosId(Long.valueOf(1));
         
         tbPermisos.setRowFactory( tv -> {
             TableRow<PermisoDTO> row = new TableRow();
@@ -92,6 +92,14 @@ public class PermisosController implements Initializable {
         ArrayList<PermisoDTO> permisos = new ArrayList<PermisoDTO>();
         Respuesta res = perService.getAll();
         permisos=(ArrayList<PermisoDTO>) res.getResultado("Permisos");
+        llenarTabla(permisos);
+    }
+    
+    public void cargarPermisosId(Long id){
+        ArrayList<PermisoDTO> permisos = new ArrayList<PermisoDTO>();
+        Respuesta res = perService.getById(id);
+        PermisoDTO per = (PermisoDTO) res.getResultado("Permiso");
+        permisos.add(per);
         llenarTabla(permisos);
     }
     
