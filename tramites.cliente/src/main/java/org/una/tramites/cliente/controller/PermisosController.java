@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -31,6 +32,7 @@ import org.una.tramites.cliente.dto.PermisoDTO;
 import org.una.tramites.cliente.service.PermisoService;
 import org.una.tramites.cliente.util.AppContext;
 import org.una.tramites.cliente.util.Respuesta;
+import proyectotitan.util.Mensaje;
 
 /**
  * FXML Controller class
@@ -63,11 +65,11 @@ public class PermisosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ArrayList<String> opciones = new ArrayList<String>();
-        opciones.add("Por nombre");
-        opciones.add("Por cédula");
+        opciones.add("Por id");
+        opciones.add("Por estado");
         cbxTipoBusqueda.getItems().clear();
         cbxTipoBusqueda.getItems().addAll(opciones);
-       //cargarPermisosTodos();
+        cargarPermisosTodos();
        // cargarPermisosId(Long.valueOf(1));
         
         tbPermisos.setRowFactory( tv -> {
@@ -113,7 +115,7 @@ public class PermisosController implements Initializable {
             TableColumn colId = new TableColumn("ID");
             colId.setCellValueFactory(new PropertyValueFactory("id"));
             TableColumn colCodigo = new TableColumn("Codigo");
-            colEstado.setCellValueFactory(new PropertyValueFactory("codigo"));
+            colCodigo.setCellValueFactory(new PropertyValueFactory("codigo"));
             TableColumn colDescripcion = new TableColumn("Descripcion");
             colDescripcion.setCellValueFactory(new PropertyValueFactory("descripcion"));
             
@@ -137,7 +139,7 @@ public class PermisosController implements Initializable {
         Contenedor.getChildren().add(root);
     }
         
-    public void cargarDepartamentosEstado(String esta){
+    public void cargarPermisosEstado(String esta){
         boolean estado=true;
         if(esta.equals("activo")||esta.equals("Activo")){
             estado = true;
@@ -150,12 +152,25 @@ public class PermisosController implements Initializable {
         Respuesta res = perService.getPermisoByEstado(estado);
         permisos=(ArrayList<PermisoDTO>) res.getResultado("Permisos");
         llenarTabla(permisos);
-    }
-      
+    } 
+    
     @FXML
     private void actBuscar(ActionEvent event) {
+        if(!txtBuscar.getText().isEmpty()){
+            if(tipoBusqueda.equals("id")){
+                cargarPermisosId(Long.valueOf(txtBuscar.getText()));
+            }else{
+                if(tipoBusqueda.equals("estado")){
+                    cargarPermisosEstado(txtBuscar.getText());
+                }
+            }
+        }else{
+            Mensaje.showAndWait(Alert.AlertType.WARNING, "Busqueda", "Ingresa el valor a buscar");
+        }
     }
-
+    
+ 
+    
     @FXML
     private void actBorrar(ActionEvent event) {
     }
@@ -168,8 +183,19 @@ public class PermisosController implements Initializable {
     private void actCerrar(ActionEvent event) {
     }
 
+
+    private String tipoBusqueda;
     @FXML
     private void actTipoBusqueda(ActionEvent event) {
-    }
-    
+        txtBuscar.setDisable(false);
+        btnBuscar.setDisable(false);
+        if(cbxTipoBusqueda.getValue().equals("Por id")){
+            tipoBusqueda="id";
+            txtBuscar.setPromptText("Id");
+        }else if(cbxTipoBusqueda.getValue().equals("Por estado")){
+            tipoBusqueda="estado";
+            txtBuscar.setPromptText("Activo o Inactivo");
+        }
+        
+    } 
 }
