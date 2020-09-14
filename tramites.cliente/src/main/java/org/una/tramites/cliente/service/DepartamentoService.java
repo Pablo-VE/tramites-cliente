@@ -25,12 +25,13 @@ public class DepartamentoService {
             Request request = new Request("departamentos");
             request.get();
             if(request.isError()){
+                System.out.println("GetAll Departamentos Error: "+request.getError());
                 return new Respuesta(false, request.getError(), "Error al obtener todos los departamentos");
             }
             List<DepartamentoDTO> result = (List<DepartamentoDTO>) request.readEntity(new GenericType<List<DepartamentoDTO>>(){});
             return new Respuesta(true, "Departamentos",result);
         }catch(Exception ex){
-
+            System.out.println("GetAll Departamentos Exception: "+ex.getMessage());
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }
@@ -55,11 +56,12 @@ public class DepartamentoService {
     
     public Respuesta guardarDepartamento(DepartamentoDTO departamento){
         try{
-            Request request = new Request("departamentos/");
+            Request request = new Request("departamentos/crear");
             request.post(departamento);
+//            request.getStatus() ==201
             if(request.isError()){
                 System.out.println(request.getError());
-                return new Respuesta(false, request.getError(), "No se pudo guardar el departamento");
+                return new Respuesta(false, request.getError(), "Error al guardar el departamento");
             }
             DepartamentoDTO result = (DepartamentoDTO) request.readEntity(DepartamentoDTO.class);
             return new Respuesta(true, "Departamento", result);

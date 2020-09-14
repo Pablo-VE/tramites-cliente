@@ -43,6 +43,8 @@ public class Request {
         this.builder = webTarget.request(MediaType.APPLICATION_JSON);
         MultivaluedMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.add("Content-Type", "application/json; charset=UTF-8");
+        headers.add("Accept", "application/json");
+        headers.add("Authorization", AppContext.getInstance().get("TokenJwt"));
         builder.headers(headers);
     }
     
@@ -51,6 +53,8 @@ public class Request {
         this.builder = webTarget.request(MediaType.APPLICATION_JSON);
         MultivaluedMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.add("Content-Type", "application/json; charset=UTF-8");
+        headers.add("Accept", "application/json");
+        headers.add("Authorization", AppContext.getInstance().get("TokenJwt"));
         builder.headers(headers);
     }
     

@@ -33,6 +33,7 @@ public class UsuarioService {
             }
             AuthenticationResponse usuario = (AuthenticationResponse) request.readEntity(AuthenticationResponse.class);
             AppContext.getInstance().set("UsuarioAutenticado", usuario);
+            AppContext.getInstance().set("TokenJwt", "bearer "+usuario.getJwt());
             return new Respuesta(true, "Usuario", usuario);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
