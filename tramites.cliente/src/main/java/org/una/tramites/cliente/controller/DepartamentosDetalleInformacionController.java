@@ -39,7 +39,6 @@ public class DepartamentosDetalleInformacionController implements Initializable 
 
     @FXML
     private TextField txtId;
-    @FXML
     private TextField txtNombre;
     @FXML
     private ComboBox<String> cmbEstado;
@@ -56,6 +55,10 @@ public class DepartamentosDetalleInformacionController implements Initializable 
     DepartamentoDTO departamentoEditar = new DepartamentoDTO();
     @FXML
     private Button btnAtras;
+    @FXML
+    private TextField txtCodigo;
+    @FXML
+    private TextField txtDescripcion;
     /**
      * Initializes the controller class.
      */

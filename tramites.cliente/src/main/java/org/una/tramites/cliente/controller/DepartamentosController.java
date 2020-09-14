@@ -214,5 +214,9 @@ public class DepartamentosController implements Initializable {
             }
         }
     }
+
+    @FXML
+    private void actCerrar(ActionEvent event) {
+    }
     
 }
