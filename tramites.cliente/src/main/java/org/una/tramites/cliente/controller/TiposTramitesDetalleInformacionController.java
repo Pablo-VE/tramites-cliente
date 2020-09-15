@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,6 +73,15 @@ public class TiposTramitesDetalleInformacionController implements Initializable 
        
         if(modalidad.equals("Agregar")){
             txtId.setVisible(false);
+        }else{
+            if(modalidad.equals("Ver")){
+                txtId.setVisible(true);
+                txtId.setDisable(true);
+                txtDescripcion.setDisable(true);
+                cmbEstado.setDisable(true);
+                cmbDepartamento.setDisable(true);
+                btnGuardar.setVisible(false);
+            }
         }
         
         ArrayList<String> estados = new ArrayList<String>();
@@ -81,8 +91,15 @@ public class TiposTramitesDetalleInformacionController implements Initializable 
         cmbEstado.getItems().addAll(estados);
         
         
-        if(modalidad.equals("Editar")){
-            tramiteTipoEditar = (TramiteTipoDTO) AppContext.getInstance().get("TramiteTipoEditar");
+        if(modalidad.equals("Editar") || modalidad.equals("Ver")){
+            if(modalidad.equals("Editar")){
+                tramiteTipoEditar = (TramiteTipoDTO) AppContext.getInstance().get("TramiteTipoEditar");
+            }else{
+                if(modalidad.equals("Ver")){
+                    tramiteTipoEditar = (TramiteTipoDTO) AppContext.getInstance().get("TramiteTipoVer");
+                }
+            }
+            
             txtId.setText(String.valueOf(tramiteTipoEditar.getId()));
             txtDescripcion.setText(tramiteTipoEditar.getDescripcion());
             
@@ -160,7 +177,8 @@ public class TiposTramitesDetalleInformacionController implements Initializable 
                     }else{
                          Mensaje.showAndWait(Alert.AlertType.ERROR, "Edicion de tipo de tramite", res.getMensaje());
                     }
-                } 
+                }
+                
             }
         }else{
             Mensaje.showAndWait(Alert.AlertType.ERROR, "Informacion de tipo de tramite", "Faltan datos por ingresar");

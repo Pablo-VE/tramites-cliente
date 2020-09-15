@@ -47,7 +47,7 @@ public class TramiteTipoService {
             return new Respuesta(true, "TramiteTipo", result);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-            return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
+            return new Respuesta(false, ex.toString(), "No puedo establecerse conexion con el servidor");
         }
     }
     
@@ -133,11 +133,15 @@ public class TramiteTipoService {
             Request request = new Request("tramites_tipos", "/{descripcion}", parametros);
             request.get();
             if(request.isError()){
+                System.out.println("Errrrrrrrrrrorrrrrrrrr1111");
                 return new Respuesta(false, request.getError(), "Error al obtener tipos de tramites por su descripcion");
             }
             List<TramiteTipoDTO> result = (List<TramiteTipoDTO>) request.readEntity(new GenericType<List<TramiteTipoDTO>>(){});
+            System.out.println("Errrrrrrrrrrorrrrrrrrr2222");
             return new Respuesta(true, "TramitesTipos",result);
+                
         }catch(Exception ex){
+            System.out.println("Errrrrrrrrrrorrrrrrrrr3333");
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }
