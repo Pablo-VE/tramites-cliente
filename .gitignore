@@ -12,6 +12,11 @@ tramites.cliente/target/classes/org/una/tramites/cliente/App.class
 *.class
 
 tramites.cliente/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+
+*.class
+
 tramites.cliente/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+
 *.lst
 *.class
+
