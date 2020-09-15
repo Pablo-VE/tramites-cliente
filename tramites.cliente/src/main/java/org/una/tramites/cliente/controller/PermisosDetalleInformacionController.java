@@ -29,7 +29,7 @@ import org.una.tramites.cliente.dto.PermisoDTO;
 import org.una.tramites.cliente.service.PermisoService;
 import org.una.tramites.cliente.util.AppContext;
 import org.una.tramites.cliente.util.Respuesta;
-import proyectotitan.util.Mensaje;
+import org.una.tramites.cliente.util.Mensaje;
 
 /**
  * FXML Controller class
