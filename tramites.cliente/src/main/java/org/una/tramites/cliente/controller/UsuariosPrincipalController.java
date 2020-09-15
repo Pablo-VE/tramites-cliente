@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,7 +32,7 @@ import org.una.tramites.cliente.dto.UsuarioDTO;
 import org.una.tramites.cliente.service.UsuarioService;
 import org.una.tramites.cliente.util.AppContext;
 import org.una.tramites.cliente.util.Respuesta;
-import proyectotitan.util.Mensaje;
+import org.una.tramites.cliente.util.Mensaje;
 
 /**
  * FXML Controller class
@@ -114,7 +115,7 @@ public class UsuariosPrincipalController implements Initializable {
 
     @FXML
     private void actAgregar(ActionEvent event) throws IOException {
-        if(registroClick!=null){
+       
             StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
 
             AppContext.getInstance().set("ModalidadUsuarios", "Agregar");
@@ -122,9 +123,7 @@ public class UsuariosPrincipalController implements Initializable {
             Parent root = FXMLLoader.load(App.class.getResource("usuarios" + ".fxml"));
             Contenedor.getChildren().clear();
             Contenedor.getChildren().add(root);
-        }else{
-            Mensaje.showAndWait(Alert.AlertType.WARNING, "Ver Usuario", "Debes seleccionar un usuario");
-        }
+        
     }
 
     @FXML
@@ -187,10 +186,24 @@ public class UsuariosPrincipalController implements Initializable {
             colId.setCellValueFactory(new PropertyValueFactory("id"));
             TableColumn colNombre = new TableColumn("Nombre");
             colNombre.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
-            TableColumn colEstado = new TableColumn("Estado");
-            colEstado.setCellValueFactory(new PropertyValueFactory("estado"));
-            TableColumn colJefe = new TableColumn("Jefe");
-            colJefe.setCellValueFactory(new PropertyValueFactory("esJefe"));
+            TableColumn<UsuarioDTO, String> colEstado = new TableColumn("Estado");
+            colEstado.setCellValueFactory(per -> {
+            String estadoString;
+            if(per.getValue().getEstado())
+                estadoString = "Activo";
+            else
+                estadoString = "Inactivo";
+            return new ReadOnlyStringWrapper(estadoString);
+        });
+            TableColumn<UsuarioDTO, String> colJefe = new TableColumn("Jefe");
+            colJefe.setCellValueFactory(per -> {
+            String estadoString;
+            if(per.getValue().getEsJefe())
+                estadoString = "Si";
+            else
+                estadoString = "No";
+            return new ReadOnlyStringWrapper(estadoString);
+        });
             
             
             tbUsuarios.getColumns().addAll(colId);
