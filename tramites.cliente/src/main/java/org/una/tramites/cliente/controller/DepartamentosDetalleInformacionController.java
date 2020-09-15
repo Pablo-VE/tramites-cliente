@@ -56,6 +56,8 @@ public class DepartamentosDetalleInformacionController implements Initializable 
     DepartamentoDTO departamento = new DepartamentoDTO();
     @FXML
     private Button btnAtras;
+    @FXML
+    private Button btnEliminar;
     /**
      * Initializes the controller class.
      */
@@ -65,6 +67,8 @@ public class DepartamentosDetalleInformacionController implements Initializable 
         
         modalidad = (String) AppContext.getInstance().get("ModalidadDepartamentos");
        
+        
+        
         if(modalidad.equals("Agregar")){
             txtId.setVisible(false);     
         }else{
@@ -177,13 +181,32 @@ public class DepartamentosDetalleInformacionController implements Initializable 
 
     @FXML
     private void actAtras(ActionEvent event) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText(null);
-            alert.setTitle("ATRAS");
-            alert.setContentText("¿Esta seguro de que desea regresar a la vista anterior?");
-            Optional<ButtonType> action = alert.showAndWait();
-                if (action.get() == ButtonType.OK) {
-                    irDepartamentos();
-                }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("ATRAS");
+        alert.setContentText("¿Esta seguro de que desea regresar a la vista anterior?");
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK) {
+            irDepartamentos();
+        }
     }
+    @FXML
+    private void actEliminar(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setContentText("¿Está seguro que desea eliminar este elemento?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try{
+                depService.delete(departamento.getId());
+                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Eliminar Departamento", "Se ha eliminado el Departamento exitosamente");
+                irDepartamentos();
+            }catch(Exception e){
+                Mensaje.showAndWait(Alert.AlertType.ERROR, "Eliminar Departamento", "No se ha podido eliminar el departamento");
+            }
+        }
+    }
+
+
 }

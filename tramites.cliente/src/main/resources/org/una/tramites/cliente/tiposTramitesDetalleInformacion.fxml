@@ -23,5 +23,6 @@
       <Label fx:id="lblFechaCreacion" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="357.0" layoutY="354.0" prefHeight="17.0" prefWidth="264.0" text="Fecha" />
       <Label layoutX="135.0" layoutY="297.0" text="Departamento:" />
       <ComboBox fx:id="cmbDepartamento" layoutX="383.0" layoutY="293.0" onAction="#actDepartamento" prefHeight="25.0" prefWidth="238.0" />
+      <Button fx:id="btnEliminar" layoutX="415.0" layoutY="458.0" mnemonicParsing="false" onAction="#actEliminar" prefHeight="25.0" prefWidth="87.0" text="Eliminar" />
    </children>
 </AnchorPane>

@@ -21,5 +21,6 @@
       <Label fx:id="lblFechaModificacion" alignment="CENTER_RIGHT" layoutX="412.0" layoutY="399.0" prefHeight="17.0" prefWidth="192.0" text="Fecha" />
       <Button fx:id="btnAtras" layoutX="143.0" layoutY="451.0" mnemonicParsing="false" onAction="#actAtras" prefHeight="25.0" prefWidth="87.0" text="Atrás" />
       <Button fx:id="btnGuardar" layoutX="517.0" layoutY="451.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="25.0" prefWidth="87.0" text="Guardar" />
+      <Button fx:id="btnEliminar" layoutX="422.0" layoutY="451.0" mnemonicParsing="false" onAction="#actEliminar" prefHeight="25.0" prefWidth="87.0" text="Eliminar" />
    </children>
 </AnchorPane>

@@ -118,4 +118,18 @@ public class DepartamentoService {
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }
+    public Respuesta delete(Long id){
+        try{
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("id", id);
+            Request request = new Request("departamentos", "/{id}", parametros);
+            request.delete();
+            if(request.isError()){
+                return new Respuesta(false, request.getError(), "No se pudo eliminar el departamento");
+            }
+            return new Respuesta(true, "Departamento eliminado exitosamente");
+        }catch(Exception ex){
+            return new Respuesta(false, ex.toString(), "No pudo establecerse conexion con el servidor");
+        }
+    }
 }

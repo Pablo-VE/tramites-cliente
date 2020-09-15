@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.UsuariosInformacionController">
+<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.UsuariosInformacionController">
    <children>
       <Label layoutX="84.0" layoutY="58.0" text="Nombre:" />
       <Label layoutX="84.0" layoutY="93.0" text="Cédula:" />
@@ -22,5 +22,6 @@
       <CheckBox fx:id="rbJefeSi" layoutX="468.0" layoutY="128.0" mnemonicParsing="false" onAction="#actJefeSi" text="Si" />
       <CheckBox fx:id="rbJefeNo" layoutX="508.0" layoutY="128.0" mnemonicParsing="false" onAction="#actJefeNo" text="No" />
       <Button fx:id="btnGuardar" layoutX="457.0" layoutY="208.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="25.0" prefWidth="89.0" text="Guardar" />
+      <Button fx:id="btnEliminar" layoutX="365.0" layoutY="208.0" mnemonicParsing="false" onAction="#actEliminar" prefHeight="25.0" prefWidth="89.0" text="Eliminar" />
    </children>
 </AnchorPane>
