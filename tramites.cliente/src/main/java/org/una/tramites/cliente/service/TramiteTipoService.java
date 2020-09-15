@@ -53,7 +53,7 @@ public class TramiteTipoService {
     
         public Respuesta guardar(TramiteTipoDTO tramiteTipo){
         try{
-            Request request = new Request("tramites_tipos");
+            Request request = new Request("tramites_tipos/");
             request.post(tramiteTipo);
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "No se pudo guardar el tipo de tramite");

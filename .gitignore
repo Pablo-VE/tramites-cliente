@@ -20,3 +20,6 @@ tramites.cliente/target/maven-status/maven-compiler-plugin/compile/default-compi
 *.lst
 *.class
 
+tramites.cliente/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+*.lst
+*.class
