@@ -28,8 +28,9 @@ import org.una.tramites.cliente.dto.DepartamentoDTO;
 import org.una.tramites.cliente.dto.PermisoDTO;
 import org.una.tramites.cliente.service.PermisoService;
 import org.una.tramites.cliente.util.AppContext;
+import org.una.tramites.cliente.util.Mensaje;
 import org.una.tramites.cliente.util.Respuesta;
-import proyectotitan.util.Mensaje;
+
 
 /**
  * FXML Controller class
@@ -56,7 +57,8 @@ public class PermisosDetalleInformacionController implements Initializable {
     private TextField txtDescripcion;
     @FXML
     private Label LabelId;
-       
+    
+    PermisoDTO permiso = new PermisoDTO();
     private String modalidad;
     PermisoService perService = new PermisoService();
     PermisoDTO permisoEditar = new PermisoDTO();
@@ -74,13 +76,6 @@ public class PermisosDetalleInformacionController implements Initializable {
         lblFechaCreacion.setText(date.toString());
         
         modalidad = (String) AppContext.getInstance().get("ModalidadPermisos");
-       
-        if(modalidad.equals("Agregar")){
-            txtId.setVisible(false);
-            LabelId.setVisible(false);
-            lblFechaModificacion.setVisible(false);
-            labelModificacion.setVisible(false);
-        }
         
         ArrayList<String> estados = new ArrayList<String>();
         estados.add("Activo");
@@ -89,21 +84,30 @@ public class PermisosDetalleInformacionController implements Initializable {
         cmbEstado.getItems().addAll(estados);
         
         
-        if(modalidad.equals("Editar")){
-            permisoEditar = (PermisoDTO) AppContext.getInstance().get("PermisoEditar");
+        if(modalidad.equals("Modificar")){
+            permisoEditar = (PermisoDTO) AppContext.getInstance().get("PermisoEnCuestion");
             txtId.setText(String.valueOf(permisoEditar.getId()));
             txtCodigo.setText(permisoEditar.getCodigo());
             txtDescripcion.setText(permisoEditar.getDescripcion());
-           if(permisoEditar.getEstado()){
+            if(permisoEditar.getEstado()){
                 cmbEstado.setValue("Activo");
             }else{
                 cmbEstado.setValue("Inactivo");
             }
             lblFechaCreacion.setText(String.valueOf(permisoEditar.getFechaRegistro()));
             lblFechaModificacion.setText(String.valueOf(permisoEditar.getFechaModificacion()));
-            
-        }
-        // TODO// TODO
+        }else{
+            if(modalidad.equals("Agregar")){
+                txtId.setVisible(false);
+                LabelId.setVisible(false);
+                lblFechaModificacion.setVisible(false);
+                labelModificacion.setVisible(false);
+            }else{
+                if(modalidad.equals("Ver")){
+                    
+                }
+            }
+        } 
     }    
 
     private boolean estado;
@@ -131,9 +135,6 @@ public class PermisosDetalleInformacionController implements Initializable {
     }
     
     public boolean validar(){
-//        if(txtId.getText().isEmpty()){
-//            return false;
-//        }
         if(cmbEstado.getValue()==null){
             return false;
         }
@@ -150,14 +151,14 @@ public class PermisosDetalleInformacionController implements Initializable {
                 nuevoPermiso.setEstado(estado);
                 
                 Respuesta res = perService.guardar(nuevoPermiso);
-               /* if(res.getEstado()){
+                if(res.getEstado()){
                     Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Registro de permisos", "Se agrego el permiso correctamente");
                     irPermisos();
                 }else{
                      Mensaje.showAndWait(Alert.AlertType.ERROR, "Registro de permiso", res.getMensaje());
-                }*/
+                }
             }else{
-                if(modalidad.equals("Editar")){
+                if(modalidad.equals("Modificar")){
                     permisoEditar.setCodigo(txtCodigo.getText());
                     permisoEditar.setDescripcion(txtDescripcion.getText());
                     permisoEditar.setEstado(estado);
