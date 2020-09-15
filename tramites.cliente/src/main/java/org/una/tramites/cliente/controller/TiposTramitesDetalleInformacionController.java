@@ -28,8 +28,8 @@ import org.una.tramites.cliente.dto.TramiteTipoDTO;
 import org.una.tramites.cliente.service.DepartamentoService;
 import org.una.tramites.cliente.service.TramiteTipoService;
 import org.una.tramites.cliente.util.AppContext;
+import org.una.tramites.cliente.util.Mensaje;
 import org.una.tramites.cliente.util.Respuesta;
-import proyectotitan.util.Mensaje;
 
 /**
  * FXML Controller class
@@ -130,6 +130,7 @@ public class TiposTramitesDetalleInformacionController implements Initializable 
     private void actGuardar(ActionEvent event) {
         if(validar()){
             if(modalidad.equals("Agregar")){
+                
                 TramiteTipoDTO nuevoTramiteTipo = new TramiteTipoDTO();
                 nuevoTramiteTipo.setDescripcion(txtDescripcion.getText());
                 nuevoTramiteTipo.setEstado(estado);
@@ -194,7 +195,13 @@ public class TiposTramitesDetalleInformacionController implements Initializable 
         ArrayList<DepartamentoDTO> departamentos = new ArrayList<DepartamentoDTO>();
         Respuesta res = depService.getDepartamentoByNombre(cmbDepartamento.getValue().toString());
         departamentos=(ArrayList<DepartamentoDTO>) res.getResultado("Departamentos");
-        return departamentos.get(0);
+        
+        departamento = departamento(departamentos.get(0).getId());
+        return departamento;
+    }
+    public DepartamentoDTO departamento(Long id){
+        Respuesta res =depService.getById(id);
+        return (DepartamentoDTO) res.getResultado("Departamento");
     }
     public void llenarComboBox(){
         ArrayList<DepartamentoDTO> departamentos = new ArrayList<DepartamentoDTO>();

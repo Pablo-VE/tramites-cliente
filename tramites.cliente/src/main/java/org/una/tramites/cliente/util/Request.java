@@ -81,7 +81,7 @@ public class Request {
     }
     
     public Boolean isError(){
-        return getStatus() != HttpServletResponse.SC_OK;
+        return (getStatus() != HttpServletResponse.SC_OK)||(getStatus() != HttpServletResponse.SC_CREATED);
     }
   
     public String getError() {
