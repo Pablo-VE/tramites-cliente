@@ -31,7 +31,7 @@ import org.una.tramites.cliente.dto.DepartamentoDTO;
 import org.una.tramites.cliente.service.DepartamentoService;
 import org.una.tramites.cliente.util.AppContext;
 import org.una.tramites.cliente.util.Respuesta;
-import proyectotitan.util.Mensaje;
+import org.una.tramites.cliente.util.Mensaje;
 
 /**
  * FXML Controller class

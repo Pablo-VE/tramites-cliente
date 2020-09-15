@@ -27,7 +27,7 @@ import org.una.tramites.cliente.service.UsuarioService;
 import org.una.tramites.cliente.util.AppContext;
 import org.una.tramites.cliente.util.AutoCompleteComboBoxListener;
 import org.una.tramites.cliente.util.Respuesta;
-import proyectotitan.util.Mensaje;
+import org.una.tramites.cliente.util.Mensaje;
 
 /**
  * FXML Controller class
@@ -67,7 +67,12 @@ public class UsuariosInformacionController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        estado=true;
+        jefe=false;
+        rbJefeNo.setSelected(true);
+        rbJefeSi.setSelected(false);
+        rbEstadoActivo.setSelected(true);
+        rbEstadoInactivo.setSelected(false);
         
         modalidad = (String) AppContext.getInstance().get("ModalidadUsuarios");
         
@@ -89,8 +94,8 @@ public class UsuariosInformacionController implements Initializable {
             txtCedula.setText(usuario.getCedula());
             iniciarEstado(usuario);
             iniciarjefe(usuario);
-            if(usuario.getDepartamentosId()!=null){
-                cbxDepartamento.setValue(usuario.getDepartamentosId().toString());
+            if(usuario.getDepartamento()!=null){
+                cbxDepartamento.setValue(usuario.getDepartamento().toString());
             }
             if(modalidad.equals("Ver")){
                 btnGuardar.setVisible(false);
@@ -102,6 +107,11 @@ public class UsuariosInformacionController implements Initializable {
                 rbJefeNo.setDisable(true);
                 rbEstadoActivo.setDisable(true);
                 rbEstadoInactivo.setDisable(true);
+            }
+        }else{
+            if(modalidad.equals("Agregar")){
+                usuario = new UsuarioDTO();
+                usuario= (UsuarioDTO) AppContext.getInstance().get("UsuarioNuevo");
             }
         }
         
@@ -186,13 +196,27 @@ public class UsuariosInformacionController implements Initializable {
                 Date date = new Date();
                 usuario.setFechaModificacion(date);
                 if(depa!=null){
-                    usuario.setDepartamentosId(depa);
+                    usuario.setDepartamento(depa);
                 }
                 Respuesta res = usuService.modificarUsuario(usuario.getId(), usuario);
                 if(res.getEstado()){
                     Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Informacion de usuario", "La informacion del usuario ha sido modificada con exito");
                 }else{
                     Mensaje.showAndWait(Alert.AlertType.ERROR, "Informacion de usuario", "Ha surgido un error por favor intentar mas tarde");
+                }
+            }else{
+                if(modalidad.equals("Agregar")){
+                    usuario.setNombreCompleto(txtNombre.getText());
+                    usuario.setCedula(txtCedula.getText());
+                    usuario.setEsJefe(jefe);
+                    usuario.setEstado(estado);
+                    if(depa!=null){
+                        usuario.setDepartamento(depa);
+                    }
+                    UsuariosController uc = (UsuariosController) AppContext.getInstance().get("ConUsuarios");
+                    uc.lblCedula.setText(txtCedula.getText());
+                    uc.lblUsuario.setText(txtNombre.getText());
+                    AppContext.getInstance().set("UsuarioNuevo", usuario);
                 }
             }
         }else{

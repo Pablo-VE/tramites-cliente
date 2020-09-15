@@ -21,5 +21,6 @@
       <Label fx:id="lblUsuario" layoutX="123.0" layoutY="31.0" text="Información" />
       <Label fx:id="lblCedula" layoutX="123.0" layoutY="57.0" text="Información" />
       <Button fx:id="btnVolver" layoutX="54.0" layoutY="463.0" mnemonicParsing="false" onAction="#actVolver" prefHeight="25.0" prefWidth="86.0" text="Volver" />
+      <Button fx:id="btnGuardar" layoutX="599.0" layoutY="463.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="25.0" prefWidth="89.0" text="Guardar" />
    </children>
 </AnchorPane>

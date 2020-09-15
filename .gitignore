@@ -17,3 +17,6 @@ tramites.cliente/target/maven-status/maven-compiler-plugin/compile/default-compi
 
 tramites.cliente/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 
+*.lst
+*.class
+

@@ -140,14 +140,16 @@ public class UsuarioService {
     
     public Respuesta guardarUsuario(UsuarioDTO usuario){
         try{
-            Request request = new Request("usuarios");
+            Request request = new Request("usuarios/");
             request.post(usuario);
             if(request.isError()){
+                System.out.println("Error creacion de usuario: "+request.getError());
                 return new Respuesta(false, request.getError(), "No se pudo guardar el usuario");
             }
             UsuarioDTO result = (UsuarioDTO) request.readEntity(UsuarioDTO.class);
             return new Respuesta(true, "Usuario", result);
         }catch(Exception ex){
+            System.out.println("Excepcion creacion de usuario: "+ex.getMessage());
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }

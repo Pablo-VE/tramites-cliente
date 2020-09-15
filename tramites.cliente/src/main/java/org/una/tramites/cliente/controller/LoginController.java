@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.service.UsuarioService;
 import org.una.tramites.cliente.util.Respuesta;
-import proyectotitan.util.Mensaje;
+import org.una.tramites.cliente.util.Mensaje;
 
 /**
  * FXML Controller class

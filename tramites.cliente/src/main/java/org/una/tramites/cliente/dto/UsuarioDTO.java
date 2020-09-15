@@ -18,30 +18,41 @@ public class UsuarioDTO {
     private Long id; 
     private String nombreCompleto;   
     private String cedula; 
+    private String passwordEncriptado;
     private boolean estado; 
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date fechaRegistro; 
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date fechaModificacion; 
     private boolean esJefe;
-    private DepartamentoDTO departamentosId;
+    private DepartamentoDTO departamento;
     private List<PermisoOtorgadoDTO> permisosOtorgados;
     private List<TramiteCambioEstadoDTO> tramitescambioestado = new ArrayList<>();
 
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(Long id, String nombreCompleto, String cedula, boolean estado, Date fechaRegistro, Date fechaModificacion, boolean esJefe, DepartamentoDTO departamentosId, List<PermisoOtorgadoDTO> permisosOtorgados) {
+    public UsuarioDTO(Long id, String nombreCompleto, String cedula, String passwordEncriptado, boolean estado, Date fechaRegistro, Date fechaModificacion, boolean esJefe, DepartamentoDTO departamento) {
         this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.cedula = cedula;
+        this.passwordEncriptado = passwordEncriptado;
         this.estado = estado;
         this.fechaRegistro = fechaRegistro;
         this.fechaModificacion = fechaModificacion;
         this.esJefe = esJefe;
-        this.departamentosId = departamentosId;
-        this.permisosOtorgados = permisosOtorgados;
+        this.departamento = departamento;
     }
+
+    public String getPasswordEncriptado() {
+        return passwordEncriptado;
+    }
+
+    public void setPasswordEncriptado(String passwordEncriptado) {
+        this.passwordEncriptado = passwordEncriptado;
+    }
+
+    
 
     
 
@@ -101,12 +112,12 @@ public class UsuarioDTO {
         this.esJefe = esJefe;
     }
 
-    public DepartamentoDTO getDepartamentosId() {
-        return departamentosId;
+    public DepartamentoDTO getDepartamento() {
+        return departamento;
     }
 
-    public void setDepartamentosId(DepartamentoDTO departamentosId) {
-        this.departamentosId = departamentosId;
+    public void setDepartamento(DepartamentoDTO departamento) {
+        this.departamento = departamento;
     }
 
     public List<PermisoOtorgadoDTO> getPermisosOtorgados() {

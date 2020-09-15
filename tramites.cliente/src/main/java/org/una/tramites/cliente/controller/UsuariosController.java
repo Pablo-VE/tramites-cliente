@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,7 +21,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.UsuarioDTO;
+import org.una.tramites.cliente.service.UsuarioService;
 import org.una.tramites.cliente.util.AppContext;
+import org.una.tramites.cliente.util.Respuesta;
+import org.una.tramites.cliente.util.Mensaje;
 
 /**
  * FXML Controller class
@@ -38,9 +42,9 @@ public class UsuariosController implements Initializable {
     @FXML
     private StackPane contenedor;
     @FXML
-    private Label lblUsuario;
+    public Label lblUsuario;
     @FXML
-    private Label lblCedula;
+    public Label lblCedula;
 
     /**
      * Initializes the controller class.
@@ -49,15 +53,31 @@ public class UsuariosController implements Initializable {
     UsuarioDTO usuario = new UsuarioDTO();
     @FXML
     private Button btnVolver;
+    @FXML
+    private Button btnGuardar;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        lblUsuario.setText("");
+        lblCedula.setText("");
         modalidad = (String) AppContext.getInstance().get("ModalidadUsuarios");
-        
+        btnGuardar.setVisible(false);
+        btnGuardar.setDisable(true);
         if(modalidad.equals("Ver")||modalidad.equals("Modificar")){
             usuario = (UsuarioDTO) AppContext.getInstance().get("UsuarioEnCuestion");
             lblUsuario.setText(usuario.getNombreCompleto());
             lblCedula.setText(usuario.getCedula());
+        }else{
+            if(modalidad.equals("Agregar")){
+                usuario=new UsuarioDTO();
+                lblUsuario.setText("usuario nuevo");
+                lblCedula.setText("usuario nuevo");
+                AppContext.getInstance().set("UsuarioNuevo", usuario);
+                btnGuardar.setVisible(true);
+                btnGuardar.setDisable(false);
+                AppContext.getInstance().set("ConUsuarios", this);
+            }
+            
         }
     }    
 
@@ -89,6 +109,23 @@ public class UsuariosController implements Initializable {
         Parent root = FXMLLoader.load(App.class.getResource("usuariosPrincipal" + ".fxml"));
         Contenedor.getChildren().clear();
         Contenedor.getChildren().add(root);
+    }
+
+    
+    private UsuarioService usuarioService= new UsuarioService();
+    @FXML
+    private void actGuardar(ActionEvent event) {
+        usuario = (UsuarioDTO) AppContext.getInstance().get("UsuarioNuevo");
+        if(usuario.getCedula()!=null && usuario.getNombreCompleto()!=null &&usuario.getPasswordEncriptado()!=null){
+            System.out.println(usuario.getDepartamento().getNombre());
+           Respuesta res = usuarioService.guardarUsuario(usuario);
+            if(res.getEstado()){
+                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Informacion de usuario", "La informacion del usuario ha sido modificada con exito");
+            }else{
+                Mensaje.showAndWait(Alert.AlertType.ERROR, "Informacion de usuario", "Ha surgido un error por favor intentar mas tarde");
+            } 
+        }
+        
     }
     
 }

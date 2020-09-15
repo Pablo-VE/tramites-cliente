@@ -27,7 +27,7 @@ import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.AuthenticationResponse;
 import org.una.tramites.cliente.dto.UsuarioDTO;
 import org.una.tramites.cliente.util.AppContext;
-import proyectotitan.util.Mensaje;
+import org.una.tramites.cliente.util.Mensaje;
 
 /**
  * FXML Controller class
