@@ -25,6 +25,7 @@ C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\ja
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\AuthenticationRequest.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\RequisitoDTO.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\NotaService.java
+C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\ParametrosGeneralesDTO.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\AutoCompleteComboBoxListener.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\ParametrosDetalleInformacionController.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\PermisosDetalleInformacionController.java
@@ -40,6 +41,7 @@ C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\ja
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\VariacionDTO.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\ClienteService.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\DisenoTramitesController.java
+C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\ParametrosGeneralesService.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TramiteTipoService.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosPrincipalController.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\AuthenticationResponse.java

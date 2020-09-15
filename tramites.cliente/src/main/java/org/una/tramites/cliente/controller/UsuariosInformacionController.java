@@ -112,6 +112,13 @@ public class UsuariosInformacionController implements Initializable {
             if(modalidad.equals("Agregar")){
                 usuario = new UsuarioDTO();
                 usuario= (UsuarioDTO) AppContext.getInstance().get("UsuarioNuevo");
+                if(usuario.getCedula()!=null){
+                    txtNombre.setText(usuario.getNombreCompleto());
+                    txtCedula.setText(usuario.getCedula());
+                    iniciarEstado(usuario);
+                    iniciarjefe(usuario);
+                }
+                
             }
         }
         
@@ -200,6 +207,7 @@ public class UsuariosInformacionController implements Initializable {
                 }
                 Respuesta res = usuService.modificarUsuario(usuario.getId(), usuario);
                 if(res.getEstado()){
+                     AppContext.getInstance().set("UsuarioEnCuestion", usuario);
                     Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Informacion de usuario", "La informacion del usuario ha sido modificada con exito");
                 }else{
                     Mensaje.showAndWait(Alert.AlertType.ERROR, "Informacion de usuario", "Ha surgido un error por favor intentar mas tarde");

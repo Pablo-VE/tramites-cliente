@@ -57,8 +57,8 @@ public class PermisoOtorgadoService {
     public Respuesta getByUsuarioPermiso(UsuarioDTO usuario, PermisoDTO permiso){
         try{
             Map<String, Object> parametros = new HashMap<>();
-            parametros.put("usuario", usuario);
-            parametros.put("permiso", permiso);
+            parametros.put("usuario", usuario.getId());
+            parametros.put("permiso", permiso.getId());
             Request request = new Request("permisos_otorgados/usuario_permiso", "/{usuario}/{permiso}", parametros);
             request.get();
             if(request.isError()){
@@ -66,7 +66,7 @@ public class PermisoOtorgadoService {
                 return new Respuesta(false, request.getError(), "Error al obtener el permiso otrogado");
             }
             PermisoOtorgadoDTO result = (PermisoOtorgadoDTO) request.readEntity(PermisoOtorgadoDTO.class);
-            return new Respuesta(true, "PermisosOtorgados", result);
+            return new Respuesta(true, "PermisoOtorgado", result);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
