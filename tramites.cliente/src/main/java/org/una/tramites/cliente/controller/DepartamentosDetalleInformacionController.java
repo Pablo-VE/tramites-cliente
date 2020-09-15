@@ -53,7 +53,7 @@ public class DepartamentosDetalleInformacionController implements Initializable 
     private String modalidad;
     
     DepartamentoService depService = new DepartamentoService();
-    DepartamentoDTO departamentoEditar = new DepartamentoDTO();
+    DepartamentoDTO departamento = new DepartamentoDTO();
     @FXML
     private Button btnAtras;
     /**
@@ -67,6 +67,11 @@ public class DepartamentosDetalleInformacionController implements Initializable 
        
         if(modalidad.equals("Agregar")){
             txtId.setVisible(false);     
+        }else{
+            if(modalidad.equals("Ver")){
+                txtNombre.setDisable(true);
+                cmbEstado.setDisable(true);
+            }
         }
         
         ArrayList<String> estados = new ArrayList<String>();
@@ -76,17 +81,23 @@ public class DepartamentosDetalleInformacionController implements Initializable 
         cmbEstado.getItems().addAll(estados);
         
         
-        if(modalidad.equals("Editar")){
-            departamentoEditar = (DepartamentoDTO) AppContext.getInstance().get("DepartamentoEditar");
-            txtId.setText(String.valueOf(departamentoEditar.getId()));
-            txtNombre.setText(departamentoEditar.getNombre());
-            if(departamentoEditar.getEstado()){
+        if(modalidad.equals("Editar")||modalidad.equals("Ver")){
+            if(modalidad.equals("Ver")){
+                departamento = (DepartamentoDTO) AppContext.getInstance().get("DepartamentoVer");
+            }else{
+                if(modalidad.equals("Editar")){
+                    departamento = (DepartamentoDTO) AppContext.getInstance().get("DepartamentoEditar");
+                }
+            }
+            txtId.setText(String.valueOf(departamento.getId()));
+            txtNombre.setText(departamento.getNombre());
+            if(departamento.getEstado()){
                 cmbEstado.setValue("Activo");
             }else{
                 cmbEstado.setValue("Inactivo");
             }
-            lblFechaCreacion.setText(String.valueOf(departamentoEditar.getFechaRegistro()));
-            lblFechaModificacion.setText(String.valueOf(departamentoEditar.getFechaModificacion()));
+            lblFechaCreacion.setText(String.valueOf(departamento.getFechaRegistro()));
+            lblFechaModificacion.setText(String.valueOf(departamento.getFechaModificacion()));
             
         }
         // TODO
@@ -121,11 +132,11 @@ public class DepartamentosDetalleInformacionController implements Initializable 
                 }
             }else{
                 if(modalidad.equals("Editar")){
-                    departamentoEditar.setNombre(txtNombre.getText());
-                    departamentoEditar.setEstado(estado);
+                    departamento.setNombre(txtNombre.getText());
+                    departamento.setEstado(estado);
                     Date date= new Date();
-                    departamentoEditar.setFechaModificacion(date);
-                    Respuesta res = depService.modificarDepartamento(departamentoEditar.getId(), departamentoEditar);
+                    departamento.setFechaModificacion(date);
+                    Respuesta res = depService.modificarDepartamento(departamento.getId(), departamento);
                     if(res.getEstado()){
                         Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Edicion de departamento", "Se edito el departamento correctamente");
                         irDepartamentos();

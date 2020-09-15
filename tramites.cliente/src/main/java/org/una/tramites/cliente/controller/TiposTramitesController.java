@@ -68,11 +68,8 @@ public class TiposTramitesController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-    TramiteTipoDTO registroClick = new TramiteTipoDTO();
     TramiteTipoService tramService = new TramiteTipoService();
-    
-    //Implementar findByEstado, findByDepartamento
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -293,7 +290,7 @@ public class TiposTramitesController implements Initializable {
         Contenedor.getChildren().clear();
         Contenedor.getChildren().add(root);
     }
-
+    private String tipoBusqueda;
     @FXML
     private void actTipoBusqueda(ActionEvent event) {
         txtBuscar.setDisable(false);
@@ -308,7 +305,7 @@ public class TiposTramitesController implements Initializable {
             }
         }
     }
-    private String tipoBusqueda;
+    
     @FXML
     private void actCerrar(ActionEvent event) {
         StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
