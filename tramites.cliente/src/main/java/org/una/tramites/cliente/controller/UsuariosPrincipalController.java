@@ -125,6 +125,8 @@ public class UsuariosPrincipalController implements Initializable {
 
     @FXML
     private void actVolver(ActionEvent event) {
+        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+        Contenedor.getChildren().clear();
     }
     
     public void  ver(UsuarioDTO usu) throws IOException{
