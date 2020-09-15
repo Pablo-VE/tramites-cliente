@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,16 +20,20 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.util.Callback;
 import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.DepartamentoDTO;
 import org.una.tramites.cliente.dto.PermisoDTO;
+import org.una.tramites.cliente.dto.UsuarioDTO;
 import org.una.tramites.cliente.service.PermisoService;
 import org.una.tramites.cliente.util.AppContext;
 import org.una.tramites.cliente.util.Mensaje;
@@ -70,23 +75,6 @@ public class PermisosController implements Initializable {
         cbxTipoBusqueda.getItems().clear();
         cbxTipoBusqueda.getItems().addAll(opciones);
         cargarPermisosTodos();
-       // cargarPermisosId(Long.valueOf(1));
-        
-        tbPermisos.setRowFactory( tv -> {
-            TableRow<PermisoDTO> row = new TableRow();
-            row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton()==MouseButton.PRIMARY && event.getClickCount()==2){
-                    registroClick = row.getItem();
-                    try{
-                        editarPermiso(registroClick);
-                    }catch(Exception ex){
-                        
-                    }
-                }
-            });
-            return row;
-        
-        });
 
 // TODO
     } 
@@ -110,8 +98,16 @@ public class PermisosController implements Initializable {
         if(permisos!=null){
             ObservableList items = FXCollections.observableArrayList(permisos);   
 
-            TableColumn colEstado = new TableColumn("Estado");
-            colEstado.setCellValueFactory(new PropertyValueFactory("estado"));
+            TableColumn<PermisoDTO, String> colEstado = new TableColumn("Estado");
+            colEstado.setCellValueFactory(per -> {
+            String estadoString;
+                if(per.getValue().getEstado())
+                    estadoString = "Activo";
+                else
+                    estadoString = "Inactivo";
+                return new ReadOnlyStringWrapper(estadoString);
+                });
+            
             TableColumn colId = new TableColumn("ID");
             colId.setCellValueFactory(new PropertyValueFactory("id"));
             TableColumn colCodigo = new TableColumn("Codigo");
@@ -123,21 +119,41 @@ public class PermisosController implements Initializable {
             tbPermisos.getColumns().addAll(colId);
             tbPermisos.getColumns().addAll(colCodigo);
             tbPermisos.getColumns().addAll(colDescripcion);
-
-
+            addButtonToTable();
             tbPermisos.setItems(items);
         }
     }
-        public void editarPermiso(PermisoDTO per) throws IOException{
-        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
-        
-        AppContext.getInstance().set("ModalidadPermisos", "Editar");
-        AppContext.getInstance().set("PermisoEditar", per);
-        
-        Parent root = FXMLLoader.load(App.class.getResource("permisosDetalleInformacion" + ".fxml"));
-        Contenedor.getChildren().clear();
-        Contenedor.getChildren().add(root);
+    public void editarPermiso(PermisoDTO per) throws IOException{
+        if(per!=null){
+            StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+
+            AppContext.getInstance().set("ModalidadPermisos", "Modificar");
+            AppContext.getInstance().set("PermisoEnCuestion", per);
+
+            Parent root = FXMLLoader.load(App.class.getResource("permisosDetalleInformacion" + ".fxml"));
+            Contenedor.getChildren().clear();
+            Contenedor.getChildren().add(root);
+        }else{
+            Mensaje.showAndWait(Alert.AlertType.WARNING, "Ver Usuario", "Debes seleccionar un usuario");
+        }
     }
+    
+
+        
+    public void  ver(PermisoDTO per) throws IOException{
+        if(per!=null){
+            StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+
+            AppContext.getInstance().set("ModalidadPermisos", "Ver");
+            AppContext.getInstance().set("PermisoEnCuestion", per);
+
+            Parent root = FXMLLoader.load(App.class.getResource("permisosDetalleInformacion" + ".fxml"));
+            Contenedor.getChildren().clear();
+            Contenedor.getChildren().add(root);
+        }else{
+            Mensaje.showAndWait(Alert.AlertType.WARNING, "Ver Usuario", "Debes seleccionar un usuario");
+        }
+    } 
         
     public void cargarPermisosEstado(String esta){
         boolean estado=true;
@@ -208,5 +224,57 @@ public class PermisosController implements Initializable {
             txtBuscar.setPromptText("Activo o Inactivo");
         }
         
-    } 
+    }
+     private void addButtonToTable() {
+        TableColumn<PermisoDTO, Void> colBtn = new TableColumn("Acciones");
+
+        Callback<TableColumn<PermisoDTO, Void>, TableCell<PermisoDTO, Void>> cellFactory = new Callback<TableColumn<PermisoDTO, Void>, TableCell<PermisoDTO, Void>>() {
+            @Override
+            public TableCell<PermisoDTO, Void> call(final TableColumn<PermisoDTO, Void> param) {
+                final TableCell<PermisoDTO, Void> cell = new TableCell<PermisoDTO, Void>() {
+
+                    private final Button btn = new Button("Mod");
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            try{
+                            PermisoDTO data = getTableView().getItems().get(getIndex());
+                            
+                            editarPermiso(data);
+                            }catch(Exception ex){}
+                        });
+                    }
+                    
+                    private final Button btn2 = new Button("Ver");
+
+                    {
+                        btn2.setOnAction((ActionEvent event) -> {
+                            try{
+                            PermisoDTO data = getTableView().getItems().get(getIndex());
+                            ver(data);
+                            }catch(Exception ex){}
+                        });
+                    }
+                    
+                    HBox pane = new HBox(btn, btn2);
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(pane);
+                            
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+
+        tbPermisos.getColumns().add(colBtn);
+
+    }
 }
