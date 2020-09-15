@@ -6,20 +6,24 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="509.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.ParametrosDetalleInformacionController">
+<AnchorPane id="AnchorPane" prefHeight="509.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.ParametrosDetalleInformacionController">
    <children>
-      <Label layoutX="185.0" layoutY="71.0" text="Información de Parámetros" />
-      <Label layoutX="91.0" layoutY="281.0" text="Estado:" />
-      <Label layoutX="90.0" layoutY="148.0" text="Id:" />
-      <Label layoutX="90.0" layoutY="212.0" text="Nombre:" />
-      <TextField fx:id="txtId" layoutX="199.0" layoutY="144.0" prefHeight="25.0" prefWidth="238.0" />
-      <TextField fx:id="txtNombre" layoutX="199.0" layoutY="208.0" prefHeight="25.0" prefWidth="238.0" />
-      <Label layoutX="90.0" layoutY="358.0" text="Creado el:" />
-      <Label layoutX="90.0" layoutY="404.0" text="Última modificación:" />
-      <ComboBox fx:id="cmbEstado" layoutX="199.0" layoutY="277.0" prefHeight="25.0" prefWidth="238.0" />
-      <Label fx:id="lblFechaCreacion" layoutX="366.0" layoutY="358.0" text="Fecha" />
-      <Label fx:id="lblFechaModificacion" layoutX="366.0" layoutY="404.0" text="Fecha" />
-      <Button fx:id="btnCancelar" layoutX="90.0" layoutY="456.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Cancelar" />
-      <Button fx:id="btnGuardar" layoutX="350.0" layoutY="456.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Guardar" />
+      <Label layoutX="185.0" layoutY="32.0" text="Información de Parámetros" />
+      <Label layoutX="91.0" layoutY="311.0" text="Estado:" />
+      <Label fx:id="LabelId" layoutX="91.0" layoutY="88.0" text="Id:" />
+      <Label layoutX="90.0" layoutY="136.0" text="Nombre:" />
+      <TextField fx:id="txtId" layoutX="200.0" layoutY="84.0" prefHeight="25.0" prefWidth="238.0" />
+      <TextField fx:id="txtNombre" layoutX="199.0" layoutY="132.0" prefHeight="25.0" prefWidth="238.0" />
+      <Label layoutX="90.0" layoutY="364.0" text="Creado el:" />
+      <Label layoutX="90.0" layoutY="410.0" text="Última modificación:" />
+      <ComboBox fx:id="cmbEstado" layoutX="199.0" layoutY="307.0" onAction="#actEstado" prefHeight="25.0" prefWidth="238.0" />
+      <Label fx:id="lblFechaCreacion" layoutX="366.0" layoutY="364.0" text="Fecha" />
+      <Label fx:id="lblFechaModificacion" layoutX="366.0" layoutY="410.0" text="Fecha" />
+      <Button fx:id="btnCancelar" layoutX="90.0" layoutY="456.0" mnemonicParsing="false" onAction="#actAtras" prefHeight="25.0" prefWidth="87.0" text="Cancelar" />
+      <Button fx:id="btnGuardar" layoutX="350.0" layoutY="456.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="25.0" prefWidth="87.0" text="Guardar" />
+      <Label layoutX="90.0" layoutY="188.0" text="Valor" />
+      <TextField fx:id="txtValor" layoutX="199.0" layoutY="184.0" prefHeight="25.0" prefWidth="238.0" />
+      <Label layoutX="90.0" layoutY="247.0" text="Descripción" />
+      <TextField fx:id="txtDescripcion" layoutX="200.0" layoutY="231.0" prefHeight="53.0" prefWidth="238.0" />
    </children>
 </AnchorPane>

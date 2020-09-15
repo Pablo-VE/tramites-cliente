@@ -5,7 +5,11 @@
  */
 package org.una.tramites.cliente.dto;
 
-import java.sql.Date;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.json.bind.annotation.JsonbDateFormat;
 
 /**
  *
@@ -16,10 +20,13 @@ public class ParametrosGeneralesDTO {
     private String nombre;
     private String valor;
     private String descripcion;
+    @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date fechaRegistro;
+    @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date fechaModificacion;
     private boolean estado;
     
+    private List<ParametrosGeneralesDTO> parametrosGeneral = new ArrayList<>();
     
     public ParametrosGeneralesDTO(){
     }
@@ -53,6 +60,13 @@ public class ParametrosGeneralesDTO {
         return valor;
     }
     
+    public void setEstado(boolean estado){
+        this.estado=estado;
+    }
+    public boolean getEstado(){
+        return estado;
+    }
+    
     public void setDescripcion(String descripcion){
         this.descripcion = descripcion;
     }
@@ -76,7 +90,13 @@ public class ParametrosGeneralesDTO {
         this.fechaModificacion = (Date) fechaModificacion;
     }
     
-    
+    public List<ParametrosGeneralesDTO> getParametrosGeneral() {
+        return parametrosGeneral;
+    }
+
+    public void setParametrosGeneral(List<ParametrosGeneralesDTO> parametrosGeneral) {
+        this.parametrosGeneral = parametrosGeneral;
+    }
     
     
     

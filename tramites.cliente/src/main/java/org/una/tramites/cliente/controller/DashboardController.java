@@ -90,7 +90,11 @@ public class DashboardController implements Initializable {
     }
 
     @FXML
-    private void actParametros(ActionEvent event) {
+    private void actParametros(ActionEvent event)throws IOException {
+        Parent root = FXMLLoader.load(App.class.getResource("parametros" + ".fxml"));
+        Contenedor.getChildren().clear();
+        Contenedor.getChildren().add(root);
+        
     }
 
     @FXML

@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
-import org.una.tramites.cliente.dto.NotaDTO;
 import org.una.tramites.cliente.dto.ParametrosGeneralesDTO;
 import org.una.tramites.cliente.dto.PermisoDTO;
 import org.una.tramites.cliente.util.Request;
@@ -27,7 +26,7 @@ public class ParametrosGeneralesService {
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "Error al obtener todos los parametros generales");
             }
-            List<NotaDTO> result = (List<NotaDTO>) request.readEntity(new GenericType<List<NotaDTO>>(){});
+            List<ParametrosGeneralesDTO> result = (List<ParametrosGeneralesDTO>) request.readEntity(new GenericType<List<ParametrosGeneralesDTO>>(){});
             return new Respuesta(true, "ParametrosGeneral",result);
         }catch(Exception ex){
 
@@ -45,7 +44,7 @@ public class ParametrosGeneralesService {
                 System.out.println(request.getError());
                 return new Respuesta(false, request.getError(), "Error al obtener los parametros generales");
             }
-            NotaDTO result = (NotaDTO) request.readEntity(NotaDTO.class);
+            ParametrosGeneralesDTO result = (ParametrosGeneralesDTO) request.readEntity(ParametrosGeneralesDTO.class);
             return new Respuesta(true, "ParametrosGeneral", result);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -57,7 +56,7 @@ public class ParametrosGeneralesService {
         try{
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("nombre", nombre);
-            Request request = new Request("parametros_generales", "/{nombre}", parametros);
+            Request request = new Request("parametros_generales/pornombre", "/{nombre}", parametros);
             request.get();
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "Error al obtener los parametros generales");
@@ -73,43 +72,43 @@ public class ParametrosGeneralesService {
         try{
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("estado", estado);
-            Request request = new Request("parametros_generales/", "/{estado}", parametros);
+            Request request = new Request("parametros_generales/porestado", "/{estado}", parametros);
             request.get();
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "Error al obtener los parametros generales");
             }
-            List<PermisoDTO> result = (List<PermisoDTO>) request.readEntity(new GenericType<List<PermisoDTO>>(){});
-            return new Respuesta(true, "ParametrosGenerales",result);
+            List<ParametrosGeneralesDTO> result = (List<ParametrosGeneralesDTO>) request.readEntity(new GenericType<List<ParametrosGeneralesDTO>>(){});
+            return new Respuesta(true, "ParametrosGeneral",result);
         }catch(Exception ex){
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }    
 
    
-    public Respuesta guardar(NotaDTO nota){
+    public Respuesta guardar(ParametrosGeneralesDTO parametro){
         try{
             Request request = new Request("parametros_generales");
-            request.post(nota);
+            request.post(parametro);
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "No se pudo guardar los parametros generales");
             }
-            NotaDTO result = (NotaDTO) request.readEntity(NotaDTO.class);
+            ParametrosGeneralesDTO result = (ParametrosGeneralesDTO) request.readEntity(ParametrosGeneralesDTO.class);
             return new Respuesta(true, "ParametrosGeneral", result);
         }catch(Exception ex){
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }
     
-    public Respuesta modificar(Long id, NotaDTO nota){
+    public Respuesta modificar(Long id, ParametrosGeneralesDTO parametro){
         try{
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("id", id);
             Request request = new Request("parametros_generales", "/{id}", parametros);
-            request.put(nota);
+            request.put(parametro);
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "No se pudo modificar los parametros generales");
             }
-            NotaDTO result = (NotaDTO) request.readEntity(NotaDTO.class);
+            ParametrosGeneralesDTO result = (ParametrosGeneralesDTO) request.readEntity(ParametrosGeneralesDTO.class);
             return new Respuesta(true, "ParametrosGeneral", result);
         }catch(Exception ex){
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
