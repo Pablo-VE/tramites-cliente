@@ -41,6 +41,23 @@ public class UsuarioService {
         }
     }
     
+    public Respuesta cambioContrasena(String cedula, String contrasena){
+        try{
+            AuthenticationRequest authetication = new AuthenticationRequest(cedula, contrasena);
+            Request request = new Request("usuarios/cambioContrasena");
+            request.post(authetication);
+            if(request.isError()){
+                System.out.println(request.getError());
+                return new Respuesta(false, request.getError(), "Contraseña invalida");
+            }
+            UsuarioDTO result = (UsuarioDTO) request.readEntity(UsuarioDTO.class);
+            return new Respuesta(true, "SolicitudCambio", result);
+            
+        }catch(Exception ex){
+            return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
+        }
+    }
+    
     public Respuesta getAll(){
         try{
             Request request = new Request("usuarios");
@@ -162,6 +179,22 @@ public class UsuarioService {
             request.put(usuario);
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "No se pudo modificar el usuario");
+            }
+            UsuarioDTO result = (UsuarioDTO) request.readEntity(UsuarioDTO.class);
+            return new Respuesta(true, "Usuario", result);
+        }catch(Exception ex){
+            return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
+        }
+    }
+    
+    public Respuesta cambiarContrasena(Long id, UsuarioDTO usuario){
+        try{
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("id", id);
+            Request request = new Request("usuarios/cambiarContrasena", "/{id}", parametros);
+            request.put(usuario);
+            if(request.isError()){
+                return new Respuesta(false, request.getError(), "No se pudo cambiar la contraseña del usuario");
             }
             UsuarioDTO result = (UsuarioDTO) request.readEntity(UsuarioDTO.class);
             return new Respuesta(true, "Usuario", result);
