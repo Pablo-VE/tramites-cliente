@@ -7,7 +7,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.UsuariosAutorizacionesController">
    <children>
-      <TableView fx:id="tbAutorizaaciones" layoutX="14.0" layoutY="14.0" prefHeight="239.0" prefWidth="601.0">
+      <TableView fx:id="tbPermisos" layoutX="14.0" layoutY="14.0" prefHeight="239.0" prefWidth="601.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />

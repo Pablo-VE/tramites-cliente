@@ -11,7 +11,7 @@
 <AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.UsuariosPrincipalController">
    <children>
       <Label layoutX="53.0" layoutY="43.0" text="Información de Usuarios" />
-      <TextField fx:id="txtBuscar" layoutX="202.0" layoutY="82.0" prefHeight="25.0" prefWidth="380.0" promptText="Buscar por id o nombre" />
+      <TextField fx:id="txtBuscar" layoutX="202.0" layoutY="82.0" prefHeight="25.0" prefWidth="380.0" promptText="Buscar por id, nombre o cédula" />
       <Button fx:id="btnBuscar" layoutX="585.0" layoutY="82.0" mnemonicParsing="false" onAction="#actBuscar" text="Buscar" />
       <Button fx:id="btnBorrar" layoutX="637.0" layoutY="82.0" mnemonicParsing="false" onAction="#actBorrar" text="Borrar" />
       <TableView fx:id="tbUsuarios" layoutX="43.0" layoutY="138.0" prefHeight="307.0" prefWidth="641.0">
@@ -23,7 +23,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ComboBox fx:id="cmbTipoBusqueda" layoutX="43.0" layoutY="82.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmbTipoBusqueda" layoutX="43.0" layoutY="82.0" onAction="#actTipoBusqueda" prefWidth="150.0" promptText="Tipo de busqueda" />
       <Button fx:id="btnVolver" layoutX="43.0" layoutY="473.0" mnemonicParsing="false" onAction="#actVolver" prefHeight="25.0" prefWidth="86.0" text="Volver" />
       <Button fx:id="btnAgregar" layoutX="598.0" layoutY="473.0" mnemonicParsing="false" onAction="#actAgregar" prefHeight="25.0" prefWidth="86.0" text="Agregar" />
    </children>
