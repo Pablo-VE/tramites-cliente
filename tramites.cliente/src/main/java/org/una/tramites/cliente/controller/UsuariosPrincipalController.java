@@ -67,19 +67,60 @@ public class UsuariosPrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-       cargarTodos();
-        
-        
-        
+        ArrayList<String> opciones = new ArrayList<String>();
+        opciones.add("Por id");
+        opciones.add("Por nombre");
+        opciones.add("Por cedula");
+        cmbTipoBusqueda.getItems().clear();
+        cmbTipoBusqueda.getItems().addAll(opciones);
+        cargarTodos(); 
     }    
 
     @FXML
     private void actBuscar(ActionEvent event) {
+         if(!txtBuscar.getText().isEmpty()){
+            if(tipoBusqueda.equals("id")){
+                cargarId(Long.valueOf(txtBuscar.getText()));
+            }else{
+                if(tipoBusqueda.equals("nombre")){
+                    cargarNombre(txtBuscar.getText());
+                }else{
+                    if(tipoBusqueda.equals("cedula")){
+                        cargarCedula(txtBuscar.getText());
+                    }
+                }
+            }
+        }else{
+            Mensaje.showAndWait(Alert.AlertType.WARNING, "Busqueda", "Ingresa el valor a buscar");
+        }
+    }
+    
+    private String tipoBusqueda;
+    @FXML
+    private void actTipoBusqueda(ActionEvent event) {
+        txtBuscar.setDisable(false);
+        btnBuscar.setDisable(false);
+        if(cmbTipoBusqueda.getValue().equals("Por id")){
+            tipoBusqueda="id";
+            txtBuscar.setPromptText("Id");
+        }else if(cmbTipoBusqueda.getValue().equals("Por nombre")){
+            tipoBusqueda="nombre";
+            txtBuscar.setPromptText("Nombre");
+        }else{
+            if(cmbTipoBusqueda.getValue().equals("Por cedula")){
+                tipoBusqueda="cedula";
+                txtBuscar.setPromptText("cédula");   
+            }
+        }
     }
 
     @FXML
     private void actBorrar(ActionEvent event) {
+        txtBuscar.setText("");
+        txtBuscar.setPromptText("Consultar por Id, nombre o cédula");
+        cmbTipoBusqueda.setPromptText("Tipo de busqueda");
+        cargarTodos();
+        Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Usuarios", "Usuarios disponibles");
     }
 
     @FXML
@@ -177,6 +218,8 @@ public class UsuariosPrincipalController implements Initializable {
             colId.setCellValueFactory(new PropertyValueFactory("id"));
             TableColumn colNombre = new TableColumn("Nombre");
             colNombre.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
+            TableColumn colCedula = new TableColumn("Cedula");
+            colCedula.setCellValueFactory(new PropertyValueFactory("cedula"));
             TableColumn<UsuarioDTO, String> colEstado = new TableColumn("Estado");
             colEstado.setCellValueFactory(per -> {
             String estadoString;
@@ -194,15 +237,10 @@ public class UsuariosPrincipalController implements Initializable {
             else
                 estadoString = "No";
             return new ReadOnlyStringWrapper(estadoString);
-        });
-            
-          
-                
-                
-                
-                
+        });  
             tbUsuarios.getColumns().addAll(colId);
             tbUsuarios.getColumns().addAll(colNombre);
+            tbUsuarios.getColumns().addAll(colCedula);
             tbUsuarios.getColumns().addAll(colEstado);
             tbUsuarios.getColumns().addAll(colJefe);
             addButtonToTable();
