@@ -131,8 +131,8 @@ public class PermisosController implements Initializable {
         public void editarPermiso(PermisoDTO per) throws IOException{
         StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
         
-       // AppContext.getInstance().set("ModalidadDepartamentos", "Editar");
-        //AppContext.getInstance().set("DepartamentoEditar", per);
+        AppContext.getInstance().set("ModalidadPermisos", "Editar");
+        AppContext.getInstance().set("PermisoEditar", per);
         
         Parent root = FXMLLoader.load(App.class.getResource("permisosDetalleInformacion" + ".fxml"));
         Contenedor.getChildren().clear();
@@ -173,10 +173,21 @@ public class PermisosController implements Initializable {
     
     @FXML
     private void actBorrar(ActionEvent event) {
+        txtBuscar.setText("");
+        txtBuscar.setPromptText("Consultar por Id o código");
+        cargarPermisosTodos();
+        Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Permisos", "Permisos disponibles");
     }
 
     @FXML
-    private void actAgregar(ActionEvent event) {
+    private void actAgregar(ActionEvent event) throws IOException {
+        
+        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+        AppContext.getInstance().set("ModalidadPermisos", "Agregar");
+        
+        Parent root = FXMLLoader.load(App.class.getResource("permisosDetalleInformacion" + ".fxml"));
+        Contenedor.getChildren().clear();
+        Contenedor.getChildren().add(root);
     }
 
     @FXML

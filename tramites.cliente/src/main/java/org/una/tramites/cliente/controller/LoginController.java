@@ -45,7 +45,10 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    txtUsuario.setText("lujepa2");
+    txtContrasena.setText("Una2020");
+
+// TODO
     }    
 
     @FXML

@@ -174,6 +174,7 @@ public class DepartamentosController implements Initializable {
 
     @FXML
     private void actBorrar(ActionEvent event) {
+        
     }
 
     @FXML

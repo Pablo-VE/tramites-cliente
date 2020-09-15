@@ -54,11 +54,12 @@ public class PermisoService {
         }
     }
     
-        public Respuesta guardar(PermisoDTO permiso){
+    public Respuesta guardar(PermisoDTO permiso){
         try{
-            Request request = new Request("permisos");
+            Request request = new Request("permisos/");
             request.post(permiso);
             if(request.isError()){
+                System.out.println(request.getError());
                 return new Respuesta(false, request.getError(), "No se pudo guardar el permiso");
             }
             PermisoDTO result = (PermisoDTO) request.readEntity(PermisoDTO.class);

@@ -15,7 +15,7 @@ import java.util.logging.Level;
  * @author Pablo-VE
  */
 public class AppContext {
-     private static AppContext INSTANCE = null;
+    private static AppContext INSTANCE = null;
     private static HashMap<String, Object> context = new HashMap<>();
      
     private AppContext() {

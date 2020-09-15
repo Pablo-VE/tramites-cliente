@@ -6,16 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.PermisosDetalleInformacionController">
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.PermisosDetalleInformacionController">
    <children>
       <Label layoutX="143.0" layoutY="69.0" text="Información de Permisos" />
       <Label layoutX="142.0" layoutY="300.0" text="Estado:" />
-      <Label layoutX="143.0" layoutY="143.0" text="Id:" />
+      <Label fx:id="LabelId" layoutX="143.0" layoutY="143.0" text="Id:" />
       <Label layoutX="142.0" layoutY="187.0" text="Código:" />
       <TextField fx:id="txtId" layoutX="327.0" layoutY="139.0" prefHeight="25.0" prefWidth="277.0" />
       <TextField fx:id="txtCodigo" layoutX="326.0" layoutY="183.0" prefHeight="25.0" prefWidth="277.0" />
       <Label layoutX="143.0" layoutY="353.0" text="Creado el:" />
-      <Label layoutX="143.0" layoutY="399.0" text="Última modificación:" />
+      <Label fx:id="labelModificacion" layoutX="143.0" layoutY="399.0" text="Última modificación:" />
       <ComboBox fx:id="cmbEstado" layoutX="326.0" layoutY="296.0" onAction="#actEstado" prefHeight="25.0" prefWidth="277.0" />
       <Label fx:id="lblFechaCreacion" layoutX="545.0" layoutY="353.0" text="Fecha" />
       <Label fx:id="lblFechaModificacion" layoutX="545.0" layoutY="399.0" text="Fecha" />

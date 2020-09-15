@@ -66,7 +66,7 @@ public class DepartamentosDetalleInformacionController implements Initializable 
         modalidad = (String) AppContext.getInstance().get("ModalidadDepartamentos");
        
         if(modalidad.equals("Agregar")){
-            txtId.setVisible(false);
+            txtId.setVisible(false);     
         }
         
         ArrayList<String> estados = new ArrayList<String>();
@@ -166,13 +166,13 @@ public class DepartamentosDetalleInformacionController implements Initializable 
 
     @FXML
     private void actAtras(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText(null);
             alert.setTitle("ATRAS");
             alert.setContentText("¿Esta seguro de que desea regresar a la vista anterior?");
             Optional<ButtonType> action = alert.showAndWait();
-            if (action.get() == ButtonType.OK) {
-                irDepartamentos();
-            }
+                if (action.get() == ButtonType.OK) {
+                    irDepartamentos();
+                }
     }
 }
