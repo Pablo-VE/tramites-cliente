@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
+import org.una.tramites.cliente.dto.PermisoDTO;
 import org.una.tramites.cliente.dto.PermisoOtorgadoDTO;
+import org.una.tramites.cliente.dto.UsuarioDTO;
 import org.una.tramites.cliente.util.Request;
 import org.una.tramites.cliente.util.Respuesta;
 
@@ -52,9 +54,28 @@ public class PermisoOtorgadoService {
         }
     }
     
+    public Respuesta getByUsuarioPermiso(UsuarioDTO usuario, PermisoDTO permiso){
+        try{
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("usuario", usuario);
+            parametros.put("permiso", permiso);
+            Request request = new Request("permisos_otorgados/usuario_permiso", "/{usuario}/{permiso}", parametros);
+            request.get();
+            if(request.isError()){
+                System.out.println(request.getError());
+                return new Respuesta(false, request.getError(), "Error al obtener el permiso otrogado");
+            }
+            PermisoOtorgadoDTO result = (PermisoOtorgadoDTO) request.readEntity(PermisoOtorgadoDTO.class);
+            return new Respuesta(true, "PermisosOtorgados", result);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
+        }
+    }
+    
         public Respuesta guardar(PermisoOtorgadoDTO permisoOtorgado){
         try{
-            Request request = new Request("permisos_otorgados");
+            Request request = new Request("permisos_otorgados/");
             request.post(permisoOtorgado);
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "No se pudo otorgar el permiso");

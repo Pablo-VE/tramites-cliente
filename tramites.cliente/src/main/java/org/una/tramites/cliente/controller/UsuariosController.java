@@ -7,6 +7,8 @@ package org.una.tramites.cliente.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +22,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import org.una.tramites.cliente.App;
+import org.una.tramites.cliente.dto.PermisoOtorgadoDTO;
 import org.una.tramites.cliente.dto.UsuarioDTO;
+import org.una.tramites.cliente.service.PermisoOtorgadoService;
 import org.una.tramites.cliente.service.UsuarioService;
 import org.una.tramites.cliente.util.AppContext;
 import org.una.tramites.cliente.util.Respuesta;
@@ -111,14 +115,26 @@ public class UsuariosController implements Initializable {
         Contenedor.getChildren().add(root);
     }
 
-    
+    PermisoOtorgadoService perOtorService = new PermisoOtorgadoService();
     private UsuarioService usuarioService= new UsuarioService();
     @FXML
     private void actGuardar(ActionEvent event) {
         usuario = (UsuarioDTO) AppContext.getInstance().get("UsuarioNuevo");
         if(usuario.getCedula()!=null && usuario.getNombreCompleto()!=null &&usuario.getPasswordEncriptado()!=null){
-            System.out.println(usuario.getDepartamento().getNombre());
-           Respuesta res = usuarioService.guardarUsuario(usuario);
+            List<PermisoOtorgadoDTO> permisosOtorgar = new ArrayList<>();
+            if(usuario.getPermisosOtorgados()!= null){
+                permisosOtorgar = usuario.getPermisosOtorgados();
+                usuario.setPermisosOtorgados(new ArrayList<>());
+            }
+            Respuesta res = usuarioService.guardarUsuario(usuario);
+            UsuarioDTO usu = (UsuarioDTO) res.getResultado("Usuario");
+            if(!permisosOtorgar.isEmpty()){
+                for(int i=0; i<permisosOtorgar.size(); i++){
+                    permisosOtorgar.get(i).setUsuario(usu);
+                    perOtorService.guardar(permisosOtorgar.get(i));
+                }
+            }
+            
             if(res.getEstado()){
                 Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Creacion de usuario", "Se ha creado con exito un nuevo usuario");
             }else{

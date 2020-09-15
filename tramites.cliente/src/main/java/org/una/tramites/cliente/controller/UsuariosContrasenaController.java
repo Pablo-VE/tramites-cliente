@@ -69,7 +69,8 @@ public class UsuariosContrasenaController implements Initializable {
         if(validar()){
             if(modalidad.equals("Agregar")){
                 usuario.setPasswordEncriptado(txtContrasena2.getText());
-                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Contraseña de usuario nuevo", "Se le ha establecido una contraseña al usuarios nuevo");
+                AppContext.getInstance().set("UsuarioNuevo", usuario);
+                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Contraseña de usuario nuevo", "Se le ha establecido una contraseña al usuario nuevo");
             }else{
                 if(modalidad.equals("Modificar")){
                     usuario.setPasswordEncriptado(txtContrasena2.getText());
