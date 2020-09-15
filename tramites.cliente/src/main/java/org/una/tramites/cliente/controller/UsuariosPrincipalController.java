@@ -125,10 +125,9 @@ public class UsuariosPrincipalController implements Initializable {
 
     @FXML
     private void actVolver(ActionEvent event) {
+        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+        Contenedor.getChildren().clear();
     }
-
-   
-    
     
     public void  ver(UsuarioDTO usu) throws IOException{
         if(usu!=null){
@@ -256,7 +255,7 @@ public class UsuariosPrincipalController implements Initializable {
             public TableCell<UsuarioDTO, Void> call(final TableColumn<UsuarioDTO, Void> param) {
                 final TableCell<UsuarioDTO, Void> cell = new TableCell<UsuarioDTO, Void>() {
 
-                    private final Button btn = new Button("Modificar");
+                    private final Button btn = new Button("Editar");
 
                     {
                         btn.setOnAction((ActionEvent event) -> {

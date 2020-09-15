@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,15 +20,19 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.util.Callback;
 import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.DepartamentoDTO;
+import org.una.tramites.cliente.dto.UsuarioDTO;
 import org.una.tramites.cliente.service.DepartamentoService;
 import org.una.tramites.cliente.util.AppContext;
 import org.una.tramites.cliente.util.Respuesta;
@@ -73,23 +78,7 @@ public class DepartamentosController implements Initializable {
         cbxTipoBusqueda.getItems().addAll(opciones);
         cargarDepartamentosTodos();
         
-        
-        tablaDepartamentos.setRowFactory( tv -> {
-            TableRow<DepartamentoDTO> row = new TableRow();
-            row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton()==MouseButton.PRIMARY && event.getClickCount()==2){
-                    registroClick = row.getItem();
-                    try{
-                        editarDepartamento(registroClick);
-                    }catch(Exception ex){
-                        
-                    }
-                }
-            });
-            return row;
-        
-        });
-        // TODO
+                // TODO
     }    
 
     public void cargarDepartamentosTodos(){
@@ -141,15 +130,88 @@ public class DepartamentosController implements Initializable {
             colId.setCellValueFactory(new PropertyValueFactory("id"));
             TableColumn colNombre = new TableColumn("Nombre");
             colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
-            TableColumn colEstado = new TableColumn("Estado");
-            colEstado.setCellValueFactory(new PropertyValueFactory("estado"));
+            TableColumn<DepartamentoDTO, String> colEstado = new TableColumn("Estado");
+            colEstado.setCellValueFactory(per -> {
+                String estadoString;
+                if(per.getValue().getEstado())
+                    estadoString = "Activo";
+                else
+                    estadoString = "Inactivo";
+                return new ReadOnlyStringWrapper(estadoString);
+            });
 
             tablaDepartamentos.getColumns().addAll(colId);
             tablaDepartamentos.getColumns().addAll(colNombre);
             tablaDepartamentos.getColumns().addAll(colEstado);
-
+            addButtonToTable();
             tablaDepartamentos.setItems(items);
         }
+    }
+    public void  ver(DepartamentoDTO dep) throws IOException{
+        if(dep!=null){
+            StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+
+            AppContext.getInstance().set("ModalidadDepartamentos", "Ver");
+            AppContext.getInstance().set("DepartamentoVer", dep);
+
+            Parent root = FXMLLoader.load(App.class.getResource("departamentosDetalleInformacion" + ".fxml"));
+            Contenedor.getChildren().clear();
+            Contenedor.getChildren().add(root);
+        }else{
+            Mensaje.showAndWait(Alert.AlertType.WARNING, "Ver Departamento", "Debes seleccionar un departamento");
+        }
+    }
+    private void addButtonToTable() {
+        TableColumn<DepartamentoDTO, Void> colBtn = new TableColumn("Acciones");
+
+        Callback<TableColumn<DepartamentoDTO, Void>, TableCell<DepartamentoDTO, Void>> cellFactory = new Callback<TableColumn<DepartamentoDTO, Void>, TableCell<DepartamentoDTO, Void>>() {
+            @Override
+            public TableCell<DepartamentoDTO, Void> call(final TableColumn<DepartamentoDTO, Void> param) {
+                final TableCell<DepartamentoDTO, Void> cell = new TableCell<DepartamentoDTO, Void>() {
+
+                    private final Button btn = new Button("Modificar");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            try{
+                            DepartamentoDTO data = getTableView().getItems().get(getIndex());
+                            editarDepartamento(data);
+                            }catch(Exception ex){}
+                        });
+                    }
+                    
+                    private final Button btn2 = new Button("Ver");
+
+                    {
+                        btn2.setOnAction((ActionEvent event) -> {
+                            try{
+                            DepartamentoDTO data = getTableView().getItems().get(getIndex());
+                            ver(data);
+                            }catch(Exception ex){}
+                        });
+                    }
+                    
+                    HBox pane = new HBox(btn, btn2);
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(pane);
+                            
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+
+        tablaDepartamentos.getColumns().add(colBtn);
+
     }
     
     
@@ -174,6 +236,8 @@ public class DepartamentosController implements Initializable {
 
     @FXML
     private void actBorrar(ActionEvent event) {
+        txtBuscar.setText("");
+        cargarDepartamentosTodos();
         
     }
 
@@ -217,7 +281,9 @@ public class DepartamentosController implements Initializable {
     }
 
     @FXML
-    private void actCerrar(ActionEvent event) {
+    private void actCerrar(ActionEvent event) throws IOException {
+        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+        Contenedor.getChildren().clear();
     }
     
 }

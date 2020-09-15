@@ -47,7 +47,7 @@ public class TramiteTipoService {
             return new Respuesta(true, "TramiteTipo", result);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-            return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
+            return new Respuesta(false, ex.toString(), "No puedo establecerse conexion con el servidor");
         }
     }
     
@@ -113,8 +113,8 @@ public class TramiteTipoService {
      public Respuesta getByDepartamento(Long id){
         try{
             Map<String, Object> parametros = new HashMap<>();
-            parametros.put("id", id);
-            Request request = new Request("tramites_tipos/usuarios_en_departamento", "/{id}", parametros);
+            parametros.put("depaId", id);
+            Request request = new Request("tramites_tipos/usuarios_en_departamento", "/{depaId}", parametros);
             request.get();
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "Error al obtener tipos de tramites por departamento");
@@ -130,13 +130,15 @@ public class TramiteTipoService {
         try{
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("descripcion", descripcion);
-            Request request = new Request("tramites_tipos", "/{descripcion}", parametros);
+            Request request = new Request("tramites_tipos/buscarDescripcion", "/{descripcion}", parametros);
             request.get();
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "Error al obtener tipos de tramites por su descripcion");
             }
             List<TramiteTipoDTO> result = (List<TramiteTipoDTO>) request.readEntity(new GenericType<List<TramiteTipoDTO>>(){});
+        
             return new Respuesta(true, "TramitesTipos",result);
+                
         }catch(Exception ex){
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
