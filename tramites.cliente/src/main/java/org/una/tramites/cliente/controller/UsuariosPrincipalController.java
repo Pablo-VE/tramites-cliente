@@ -126,9 +126,6 @@ public class UsuariosPrincipalController implements Initializable {
     @FXML
     private void actVolver(ActionEvent event) {
     }
-
-   
-    
     
     public void  ver(UsuarioDTO usu) throws IOException{
         if(usu!=null){
