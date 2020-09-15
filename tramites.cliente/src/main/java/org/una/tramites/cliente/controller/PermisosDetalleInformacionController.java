@@ -104,7 +104,22 @@ public class PermisosDetalleInformacionController implements Initializable {
                 labelModificacion.setVisible(false);
             }else{
                 if(modalidad.equals("Ver")){
-                    
+                    permisoEditar = (PermisoDTO) AppContext.getInstance().get("PermisoEnCuestion");
+                    txtId.setText(String.valueOf(permisoEditar.getId()));
+                    txtId.setDisable(true);
+                    txtCodigo.setText(permisoEditar.getCodigo());
+                    txtCodigo.setDisable(true);
+                    txtDescripcion.setText(permisoEditar.getDescripcion());
+                    txtDescripcion.setDisable(true);
+                    if(permisoEditar.getEstado()){
+                        cmbEstado.setValue("Activo");
+                    }else{
+                        cmbEstado.setValue("Inactivo");
+                    }
+                    cmbEstado.setDisable(true);
+                    lblFechaCreacion.setText(String.valueOf(permisoEditar.getFechaRegistro()));
+                    lblFechaModificacion.setText(String.valueOf(permisoEditar.getFechaModificacion())); 
+                    btnGuardar.setVisible(false);
                 }
             }
         } 
