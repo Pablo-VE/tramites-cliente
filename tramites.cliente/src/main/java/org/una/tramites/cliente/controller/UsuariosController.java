@@ -120,7 +120,7 @@ public class UsuariosController implements Initializable {
             System.out.println(usuario.getDepartamento().getNombre());
            Respuesta res = usuarioService.guardarUsuario(usuario);
             if(res.getEstado()){
-                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Informacion de usuario", "La informacion del usuario ha sido modificada con exito");
+                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Creacion de usuario", "Se ha creado con exito un nuevo usuario");
             }else{
                 Mensaje.showAndWait(Alert.AlertType.ERROR, "Informacion de usuario", "Ha surgido un error por favor intentar mas tarde");
             } 

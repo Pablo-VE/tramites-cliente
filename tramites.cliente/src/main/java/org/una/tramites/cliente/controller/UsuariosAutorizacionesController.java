@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import org.una.tramites.cliente.dto.PermisoDTO;
 
 /**
  * FXML Controller class
@@ -21,7 +22,7 @@ import javafx.scene.control.TableView;
 public class UsuariosAutorizacionesController implements Initializable {
 
     @FXML
-    private TableView<?> tbAutorizaaciones;
+    private TableView<PermisoDTO> tbAutorizaaciones;
     @FXML
     private Button btnCancelar;
     @FXML

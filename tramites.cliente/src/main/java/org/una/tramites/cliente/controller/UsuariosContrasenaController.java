@@ -75,9 +75,9 @@ public class UsuariosContrasenaController implements Initializable {
                     usuario.setPasswordEncriptado(txtContrasena2.getText());
                     Date date = new Date();
                     usuario.setFechaModificacion(date);
-                    Respuesta res = usuService.modificarUsuario(usuario.getId(), usuario);
+                    Respuesta res = usuService.cambiarContrasena(usuario.getId(), usuario);
                     if(res.getEstado()){
-                        Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Informacion de usuario", "La informacion del usuario ha sido modificada con exito");
+                        Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Informacion de usuario", "Se ha guardado la nueva contrasena con exito");
                     }else{
                         Mensaje.showAndWait(Alert.AlertType.ERROR, "Informacion de usuario", "Ha surgido un error por favor intentar mas tarde");
                     }
@@ -105,7 +105,7 @@ public class UsuariosContrasenaController implements Initializable {
             usuario = (UsuarioDTO) AppContext.getInstance().get("UsuarioEnCuestion");
             lblContrasena1.setText("Contraseña actual:");
             lblContrasena2.setText("Contraseña nueva:");
-            txtContrasena1.setText(usuario.getPasswordEncriptado());
+          //  txtContrasena1.setText(usuario.getPasswordEncriptado());
         }
            
     }
@@ -120,6 +120,12 @@ public class UsuariosContrasenaController implements Initializable {
             if(modalidad.equals("Agregar")){
                 if(!txtContrasena1.getText().equals(txtContrasena2.getText())){
                     Mensaje.showAndWait(Alert.AlertType.ERROR, "Registro de Contraseña", "Contraseñas no coinciden");
+                    return false;
+                }
+            }if(modalidad.equals("Modificar")){
+                Respuesta res = usuService.cambioContrasena(usuario.getCedula(), txtContrasena1.getText());
+                if(!res.getEstado()){
+                    Mensaje.showAndWait(Alert.AlertType.ERROR, "Registro de Contraseña", "Contraseña actual no coincide");
                     return false;
                 }
             }
