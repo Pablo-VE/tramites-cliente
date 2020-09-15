@@ -21,7 +21,7 @@ public class VariacionDTO {
     private boolean estado;
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date fechaRegistro;
-    private TramiteTipoDTO tramites; 
+    private TramiteTipoDTO tramitesTipos; 
     private List<RequisitoDTO> requisitos = new ArrayList<>();
 
     public VariacionDTO() {
@@ -33,7 +33,7 @@ public class VariacionDTO {
         this.descripcion = descripcion;
         this.estado = estado;
         this.fechaRegistro = fechaRegistro;
-        this.tramites = tramites;
+        this.tramitesTipos = tramites;
     }
 
     public Long getId() {
@@ -77,11 +77,11 @@ public class VariacionDTO {
     }
 
     public TramiteTipoDTO getTramites() {
-        return tramites;
+        return tramitesTipos;
     }
 
     public void setTramites(TramiteTipoDTO tramites) {
-        this.tramites = tramites;
+        this.tramitesTipos = tramites;
     }
 
     public List<RequisitoDTO> getRequisitos() {

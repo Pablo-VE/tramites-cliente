@@ -34,8 +34,9 @@ import org.una.tramites.cliente.dto.TramiteTipoDTO;
 import org.una.tramites.cliente.service.DepartamentoService;
 import org.una.tramites.cliente.service.TramiteTipoService;
 import org.una.tramites.cliente.util.AppContext;
+import org.una.tramites.cliente.util.Mensaje;
 import org.una.tramites.cliente.util.Respuesta;
-import proyectotitan.util.Mensaje;
+
 
 /**
  * FXML Controller class
@@ -200,12 +201,12 @@ public class TiposTramitesController implements Initializable {
     }
     
     public void editarTramitesTipos(TramiteTipoDTO tram) throws IOException{
+        
         StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
         
-        AppContext.getInstance().set("ModalidadDepartamentos", "Editar");
-        AppContext.getInstance().set("DepartamentoEditar", tram);
-        
-        Parent root = FXMLLoader.load(App.class.getResource("departamentosDetalleInformacion" + ".fxml"));
+        AppContext.getInstance().set("ModalidadTramitesTipos", "Editar");
+        AppContext.getInstance().set("TramiteTipoEditar", tram);
+        Parent root = FXMLLoader.load(App.class.getResource("tiposTramitesDetalleInformacion" + ".fxml"));
         Contenedor.getChildren().clear();
         Contenedor.getChildren().add(root);
     }
