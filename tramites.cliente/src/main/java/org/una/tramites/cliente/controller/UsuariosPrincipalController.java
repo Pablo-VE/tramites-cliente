@@ -20,13 +20,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.util.Callback;
 import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.UsuarioDTO;
 import org.una.tramites.cliente.service.UsuarioService;
@@ -54,16 +57,11 @@ public class UsuariosPrincipalController implements Initializable {
     @FXML
     private Button btnVolver;
     @FXML
-    private Button btnVer;
-    @FXML
     private Button btnAgregar;
-    @FXML
-    private Button btnModificar;
 
     UsuarioService usuService = new UsuarioService();
 
     
-    UsuarioDTO registroClick = null;
     /**
      * Initializes the controller class.
      */
@@ -73,16 +71,7 @@ public class UsuariosPrincipalController implements Initializable {
        cargarTodos();
         
         
-        tbUsuarios.setRowFactory( tv -> {
-            TableRow<UsuarioDTO> row = new TableRow();
-            row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton()==MouseButton.PRIMARY && event.getClickCount()==1){
-                    registroClick = row.getItem();
-                }
-            });
-            return row;
         
-        });
     }    
 
     @FXML
@@ -97,13 +86,15 @@ public class UsuariosPrincipalController implements Initializable {
     private void actVolver(ActionEvent event) {
     }
 
-    @FXML
-    private void actVer(ActionEvent event) throws IOException {
-        if(registroClick!=null){
+   
+    
+    
+    public void  ver(UsuarioDTO usu) throws IOException{
+        if(usu!=null){
             StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
 
             AppContext.getInstance().set("ModalidadUsuarios", "Ver");
-            AppContext.getInstance().set("UsuarioEnCuestion", registroClick);
+            AppContext.getInstance().set("UsuarioEnCuestion", usu);
 
             Parent root = FXMLLoader.load(App.class.getResource("usuarios" + ".fxml"));
             Contenedor.getChildren().clear();
@@ -126,13 +117,13 @@ public class UsuariosPrincipalController implements Initializable {
         
     }
 
-    @FXML
-    private void actModificar(ActionEvent event) throws IOException {
-        if(registroClick!=null){
+    
+    public void modificar(UsuarioDTO usu) throws IOException{
+        if(usu!=null){
             StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
 
             AppContext.getInstance().set("ModalidadUsuarios", "Modificar");
-            AppContext.getInstance().set("UsuarioEnCuestion", registroClick);
+            AppContext.getInstance().set("UsuarioEnCuestion", usu);
 
             Parent root = FXMLLoader.load(App.class.getResource("usuarios" + ".fxml"));
             Contenedor.getChildren().clear();
@@ -205,14 +196,71 @@ public class UsuariosPrincipalController implements Initializable {
             return new ReadOnlyStringWrapper(estadoString);
         });
             
-            
+          
+                
+                
+                
+                
             tbUsuarios.getColumns().addAll(colId);
             tbUsuarios.getColumns().addAll(colNombre);
             tbUsuarios.getColumns().addAll(colEstado);
             tbUsuarios.getColumns().addAll(colJefe);
-            
+            addButtonToTable();
             tbUsuarios.setItems(items);
         }
+    }
+    
+    private void addButtonToTable() {
+        TableColumn<UsuarioDTO, Void> colBtn = new TableColumn("Acciones");
+
+        Callback<TableColumn<UsuarioDTO, Void>, TableCell<UsuarioDTO, Void>> cellFactory = new Callback<TableColumn<UsuarioDTO, Void>, TableCell<UsuarioDTO, Void>>() {
+            @Override
+            public TableCell<UsuarioDTO, Void> call(final TableColumn<UsuarioDTO, Void> param) {
+                final TableCell<UsuarioDTO, Void> cell = new TableCell<UsuarioDTO, Void>() {
+
+                    private final Button btn = new Button("Mod");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            try{
+                            UsuarioDTO data = getTableView().getItems().get(getIndex());
+                            modificar(data);
+                            }catch(Exception ex){}
+                        });
+                    }
+                    
+                    private final Button btn2 = new Button("Ver");
+
+                    {
+                        btn2.setOnAction((ActionEvent event) -> {
+                            try{
+                            UsuarioDTO data = getTableView().getItems().get(getIndex());
+                            ver(data);
+                            }catch(Exception ex){}
+                        });
+                    }
+                    
+                    HBox pane = new HBox(btn, btn2);
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(pane);
+                            
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+
+        tbUsuarios.getColumns().add(colBtn);
+
     }
     
 }
