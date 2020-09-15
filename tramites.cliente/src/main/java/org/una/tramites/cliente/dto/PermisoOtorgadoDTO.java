@@ -6,7 +6,6 @@
 package org.una.tramites.cliente.dto;
 
 import java.util.Date;
-import java.util.List;
 import javax.json.bind.annotation.JsonbDateFormat;
 
 /**
@@ -17,21 +16,22 @@ public class PermisoOtorgadoDTO {
     private Long id; 
     private UsuarioDTO usuario;   
     private PermisoDTO permiso; 
+    
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date fechaRegistro; 
+    
     private boolean estado; 
-    private List<TransaccionDTO> transacciones;
+////    private List<TransaccionDTO> transacciones;
 
     public PermisoOtorgadoDTO() {
     }
 
-    public PermisoOtorgadoDTO(Long id, UsuarioDTO usuario, PermisoDTO permiso, Date fechaRegistro, boolean estado, List<TransaccionDTO> transacciones) {
+    public PermisoOtorgadoDTO(Long id, UsuarioDTO usuario, PermisoDTO permiso, Date fechaRegistro, boolean estado) {
         this.id = id;
         this.usuario = usuario;
         this.permiso = permiso;
         this.fechaRegistro = fechaRegistro;
         this.estado = estado;
-        this.transacciones = transacciones;
     }
 
     public Long getId() {
@@ -66,7 +66,7 @@ public class PermisoOtorgadoDTO {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
@@ -74,13 +74,13 @@ public class PermisoOtorgadoDTO {
         this.estado = estado;
     }
 
-    public List<TransaccionDTO> getTransacciones() {
-        return transacciones;
-    }
-
-    public void setTransacciones(List<TransaccionDTO> transacciones) {
-        this.transacciones = transacciones;
-    }
+//    public List<TransaccionDTO> getTransacciones() {
+//        return transacciones;
+//    }
+//
+//    public void setTransacciones(List<TransaccionDTO> transacciones) {
+//        this.transacciones = transacciones;
+//    }
     
     
 }

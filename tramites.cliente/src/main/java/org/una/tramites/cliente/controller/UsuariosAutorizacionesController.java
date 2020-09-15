@@ -48,7 +48,7 @@ public class UsuariosAutorizacionesController implements Initializable {
     @FXML
     private Button btnGuardar;
     @FXML
-    private TableView<PermisoDTO> tbPermisos;
+    private TableView<PermisosTableView> tbPermisos;
 
     /**
      * Initializes the controller class.
@@ -61,17 +61,27 @@ public class UsuariosAutorizacionesController implements Initializable {
     UsuarioDTO usu = new UsuarioDTO();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        permisosOtorgadosUsuario=new ArrayList<>();
+        permisos_a_otorgar = new ArrayList<>();
+        btnGuardar.setDisable(false);
+        btnGuardar.setVisible(true);
         modalidad = (String) AppContext.getInstance().get("ModalidadUsuarios");
         if(modalidad.equals("Agregar")){
             usu= (UsuarioDTO) AppContext.getInstance().get("UsuarioNuevo");
         }else{
-            if(modalidad.equals("Modificar")){
-                usu=(UsuarioDTO) AppContext.getInstance().get("UsuarioEnCuestion");
+            if(modalidad.equals("Modificar")||modalidad.equals("Ver")){
+                usu=(UsuarioDTO) AppContext.getInstance().get("UsuarioEnCuestion"); 
                 
+                if(modalidad.equals("Ver")){
+                    btnGuardar.setDisable(true);
+                    btnGuardar.setVisible(false);
+                }
             }
         }
+        AppContext.getInstance().set("permisosYaOtorgados",permisosOtorgadosUsuario);
+        AppContext.getInstance().set("permisos_a_otorgar",permisos_a_otorgar);
         cargarPermisosEstado();
-        // TODO
+       
     }    
 
     @FXML
@@ -84,9 +94,10 @@ public class UsuariosAutorizacionesController implements Initializable {
 
     @FXML
     private void actGuardar(ActionEvent event) {
+        permisos_a_otorgar = (ArrayList<PermisoDTO>) AppContext.getInstance().get("permisos_a_otorgar");
         if(modalidad.equals("Agregar")){
             if(permisos_a_otorgar==null){
-                Mensaje.showAndWait(Alert.AlertType.WARNING, "Permisos a otorgar", "No ha seleccionado ningun permiso para otorgarle al usuario");
+                
             
             }else{
                 List<PermisoOtorgadoDTO> permisosOtorgar = new ArrayList<>();
@@ -95,15 +106,30 @@ public class UsuariosAutorizacionesController implements Initializable {
                     permisoOtorgado.setUsuario(usu);
                     permisoOtorgado.setEstado(true);
                     permisoOtorgado.setPermiso(permisos_a_otorgar.get(i));
-//                    perOtorService.guardar(permisoOtorgado);
                     permisosOtorgar.add(permisoOtorgado);
                 }
                 usu.setPermisosOtorgados(permisosOtorgar);
                 AppContext.getInstance().set("UsuarioNuevo", usu);
+                cargarPermisosEstado();
                 Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Permisos a otorgar", "Se le han a establecidos persmisos al nuevo usuario");
+                permisosOtorgadosUsuario=new ArrayList<>();
+                permisos_a_otorgar = new ArrayList<>();
+                AppContext.getInstance().set("permisosYaOtorgados",permisosOtorgadosUsuario);
+                AppContext.getInstance().set("permisos_a_otorgar",permisos_a_otorgar);
+            }
+        }else{
+            if(modalidad.equals("Modificar")){
+                modificarPermisos(permisos_a_otorgar, permisosOtorgadosUsuario);
+                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Permisos a otorgar", "Se han modificado los permisos otorgados del usuario correctamente");
+                AppContext.getInstance().set("UsuarioEnCuestion", usu);
+                AppContext.getInstance().set("ModalidadUsuarios", "Modificar");
+                cargarPermisosEstado();
+                permisosOtorgadosUsuario=new ArrayList<>();
+                permisos_a_otorgar = new ArrayList<>();
+                AppContext.getInstance().set("permisosYaOtorgados",permisosOtorgadosUsuario);
+                AppContext.getInstance().set("permisos_a_otorgar",permisos_a_otorgar);
             }
         }
-        mostrarPermisosAOtorgar();
     }
     
     PermisoService perService = new PermisoService();
@@ -115,138 +141,20 @@ public class UsuariosAutorizacionesController implements Initializable {
         llenarTabla(permisos);
     }
     
-    public void llenarTabla(ArrayList<PermisoDTO> permisos){
-        tbPermisos.getColumns().clear();
-        if(permisos!=null){
-            ObservableList items = FXCollections.observableArrayList(permisos);   
-
-            
-           
-            
-            TableColumn colId = new TableColumn("ID");
-            colId.setCellValueFactory(new PropertyValueFactory("id"));
-            TableColumn colCodigo = new TableColumn("Codigo");
-            colCodigo.setCellValueFactory(new PropertyValueFactory("codigo"));
-            TableColumn colDescripcion = new TableColumn("Descripcion");
-            colDescripcion.setCellValueFactory(new PropertyValueFactory("descripcion"));
-            
-          
-            tbPermisos.getColumns().addAll(colId);
-            tbPermisos.getColumns().addAll(colCodigo);
-            tbPermisos.getColumns().addAll(colDescripcion);
-            addButtonToTable();
-            tbPermisos.setItems(items);
-            
-        }
-    }
     
-    private void addButtonToTable() {
-        TableColumn<PermisoDTO, Void> colCB = new TableColumn("Otorgar Permiso");
-
-        Callback<TableColumn<PermisoDTO, Void>, TableCell<PermisoDTO, Void>> cellFactory = new Callback<TableColumn<PermisoDTO, Void>, TableCell<PermisoDTO, Void>>() {
-            
-            @Override
-            public TableCell<PermisoDTO, Void> call(final TableColumn<PermisoDTO, Void> param) {
-                final TableCell<PermisoDTO, Void> cell = new TableCell<PermisoDTO, Void>() {
-                    
-                   
-                    private final CheckBox cbox = new CheckBox();
-                    {
-                        
-                        //System.out.println(getTableRow().getItem().getCodigo());
-                     //   System.out.println(getTableView().getItems().get(getIndex()).getCodigo());
-                        cbox.setOnAction((ActionEvent event) -> {
-                            try{
-                            PermisoDTO data = getTableView().getItems().get(getIndex());
-                                setearPermisosAOtorgar(data);
-                            }catch(Exception ex){}
-                        });
-                        
-                    }
-                    
-                    
-                    
-
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(cbox);
-                            
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
-
-       //olCB.get
-        colCB.setCellFactory(cellFactory);
-
-        tbPermisos.getColumns().add(colCB);
-    }
+    
+    
     
     
     ArrayList<PermisoDTO> permisos_a_otorgar = new ArrayList<>();
     
-    public void setearPermisosAOtorgar(PermisoDTO permiso){
-        if(permisos_a_otorgar==null){
-            permisos_a_otorgar.add(permiso);
-        }else{
-            boolean esta=false;
-            for(int i=0; i<permisos_a_otorgar.size(); i++){
-                if(permisos_a_otorgar.get(i).getId()==permiso.getId()){
-                    esta=true;
-                }
-            }
-            if(esta){
-                eliminarPermisosAOtorgar(permiso);
-            }else{
-                permisos_a_otorgar.add(permiso);
-            }
-        }
-        
-    }
-    
-    
-    ArrayList<PermisoDTO> permisosOtorgadosUsuario = new ArrayList<>();
-    
-    public boolean permisoOtorgado(PermisoDTO per){
-        Respuesta res = perOtorService.getByUsuarioPermiso(usu, per);
-        if(res.getEstado()){
-            return true;
-        }else{
-            System.out.println(res.getMensajeInterno());
-        }
-        return false;
-    }
+    ArrayList<PermisoOtorgadoDTO> permisosOtorgadosUsuario = new ArrayList<>();
+ 
+   
     
     
     
-    public void eliminarPermisosAOtorgar(PermisoDTO permiso){
-        for(int i=0; i<permisos_a_otorgar.size(); i++){
-            if(permisos_a_otorgar.get(i).getId()==permiso.getId()){
-                permisos_a_otorgar.remove(i);
-            }
-        }
-    }
-    
-    public void mostrarPermisosAOtorgar(){
-        System.out.println("Permisos a otorgar");
-        if(permisos_a_otorgar==null){
-            System.out.println("Lista Vacia");
-        }else{
-            for(int i=0; i<permisos_a_otorgar.size(); i++){
-                System.out.println(permisos_a_otorgar.get(i).getCodigo());
-            }
-        }
-    }
-    
-    
-    
-    public void llenarTabla2(ArrayList<PermisoDTO> permisos){
+    public void llenarTabla(ArrayList<PermisoDTO> permisos){
         List<PermisosTableView> permisos2= new ArrayList<>();
         for(int i=0; i<permisos.size();i++){
             permisos2.add(new PermisosTableView(permisos.get(i)));  
@@ -257,17 +165,16 @@ public class UsuariosAutorizacionesController implements Initializable {
             ObservableList items = FXCollections.observableArrayList(permisos2);   
 
             
-           
-            
             TableColumn colId = new TableColumn("ID");
             colId.setCellValueFactory(new PropertyValueFactory<PermisosTableView, String>("id"));
             TableColumn colCodigo = new TableColumn("Codigo");
             colCodigo.setCellValueFactory(new PropertyValueFactory<PermisosTableView, String>("codigo"));
             TableColumn colDescripcion = new TableColumn("Descripcion");
             colDescripcion.setCellValueFactory(new PropertyValueFactory<PermisosTableView, String>("descripcion"));
-            TableColumn cb = new TableColumn("Otorgar Permiso");
+            TableColumn<PermisosTableView, String> cb = new TableColumn("Otorgar Permiso");
             cb.setCellValueFactory(new PropertyValueFactory<PermisosTableView, String>("select"));
-          
+            
+ 
             tbPermisos.getColumns().addAll(colId);
             tbPermisos.getColumns().addAll(colCodigo);
             tbPermisos.getColumns().addAll(colDescripcion);
@@ -275,6 +182,81 @@ public class UsuariosAutorizacionesController implements Initializable {
             //addButtonToTable();
             tbPermisos.setItems(items);
             
+        }
+    }
+    
+    
+    public void modificarPermisos(ArrayList<PermisoDTO> permisos, ArrayList<PermisoOtorgadoDTO> permisosO){
+        boolean modificado=false;
+        boolean existia=false;
+        if(permisos!=null){
+            for(int i=0; i<permisos.size(); i++){
+                existia=false;
+                modificado=false;
+                if(permisosO!=null){
+                    for(int j=0; j<permisosO.size(); j++){
+                        
+                        if(!modificado){
+                            if(permisos.get(i).getId().equals(permisosO.get(j).getPermiso().getId())){
+                                existia=true;
+                                if(!permisosO.get(j).getEstado()){
+                                    PermisoOtorgadoDTO per = new PermisoOtorgadoDTO();
+                                    per=permisosO.get(j);
+                                    per.setEstado(true);
+                                    perOtorService.modificar(per.getId(), per);
+                                    permisosO.remove(j);
+                                    permisos.remove(i);
+                                    modificado=true;
+                                }
+                            }
+                        }
+                    }
+                    if(!existia){
+                        PermisoOtorgadoDTO perN=new PermisoOtorgadoDTO();
+                        perN.setEstado(true);
+                        perN.setUsuario(usu);
+                        perN.setPermiso(permisos.get(i));
+                        perOtorService.guardar(perN);
+                        permisos.remove(i);
+                    }
+                }else{
+                    PermisoOtorgadoDTO perN=new PermisoOtorgadoDTO();
+                    perN.setEstado(true);
+                    perN.setUsuario(usu);
+                    perN.setPermiso(permisos.get(i));
+                    perOtorService.guardar(perN);
+                    permisos.remove(i);
+                }
+            }
+        }
+        boolean existe=false;
+        if(permisosO!=null){
+            for(int i=0; i<permisosO.size(); i++){
+                existe=false;
+                if(permisos!=null)
+                {
+                    for(int j=0; j<permisos.size(); j++){
+                        if(permisosO.get(i).getPermiso().getId().equals(permisos.get(j).getId())){
+                            existe=true;
+                        }
+                    }
+                    if(!existe){
+                        PermisoOtorgadoDTO per = new PermisoOtorgadoDTO();
+                        per=permisosO.get(i);
+                        per.setEstado(false);
+                        perOtorService.modificar(per.getId(), per);
+                        permisosO.remove(i);
+                    }
+                }else{
+                    PermisoOtorgadoDTO per = new PermisoOtorgadoDTO();
+                    per=permisosO.get(i);
+                    per.setEstado(false);
+                    perOtorService.modificar(per.getId(), per);
+                    permisosO.remove(i);
+                }
+                
+                
+            }
         }
     }
     

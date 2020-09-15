@@ -78,6 +78,7 @@ public class UsuariosContrasenaController implements Initializable {
                     usuario.setFechaModificacion(date);
                     Respuesta res = usuService.cambiarContrasena(usuario.getId(), usuario);
                     if(res.getEstado()){
+                        AppContext.getInstance().set("UsuarioEnCuestion", usuario);
                         Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Informacion de usuario", "Se ha guardado la nueva contrasena con exito");
                     }else{
                         Mensaje.showAndWait(Alert.AlertType.ERROR, "Informacion de usuario", "Ha surgido un error por favor intentar mas tarde");

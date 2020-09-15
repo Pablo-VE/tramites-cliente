@@ -255,7 +255,7 @@ public class UsuariosPrincipalController implements Initializable {
             public TableCell<UsuarioDTO, Void> call(final TableColumn<UsuarioDTO, Void> param) {
                 final TableCell<UsuarioDTO, Void> cell = new TableCell<UsuarioDTO, Void>() {
 
-                    private final Button btn = new Button("Modificar");
+                    private final Button btn = new Button("Editar");
 
                     {
                         btn.setOnAction((ActionEvent event) -> {

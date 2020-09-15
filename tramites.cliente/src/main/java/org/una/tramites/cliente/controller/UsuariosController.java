@@ -62,11 +62,17 @@ public class UsuariosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        iniciar();
+    }    
+
+    public void iniciar(){
+        contenedor.getChildren().clear();
         lblUsuario.setText("");
         lblCedula.setText("");
         modalidad = (String) AppContext.getInstance().get("ModalidadUsuarios");
         btnGuardar.setVisible(false);
         btnGuardar.setDisable(true);
+        
         if(modalidad.equals("Ver")||modalidad.equals("Modificar")){
             usuario = (UsuarioDTO) AppContext.getInstance().get("UsuarioEnCuestion");
             lblUsuario.setText(usuario.getNombreCompleto());
@@ -83,8 +89,7 @@ public class UsuariosController implements Initializable {
             }
             
         }
-    }    
-
+    }
 
     @FXML
     private void actInformacion(ActionEvent event) throws IOException {
@@ -134,6 +139,11 @@ public class UsuariosController implements Initializable {
                     perOtorService.guardar(permisosOtorgar.get(i));
                 }
             }
+            
+            AppContext.getInstance().set("ModalidadUsuarios", "Modificar");
+            AppContext.getInstance().set("UsuarioEnCuestion", usu);
+            this.iniciar();
+            
             
             if(res.getEstado()){
                 Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Creacion de usuario", "Se ha creado con exito un nuevo usuario");
