@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.ParametrosDetalleInformacionController">
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" stylesheets="@estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.ParametrosDetalleInformacionController">
    <children>
       <Label layoutX="185.0" layoutY="32.0" text="Información de Parámetros" />
       <Label layoutX="178.0" layoutY="316.0" text="Estado:" />
@@ -19,12 +19,12 @@
       <ComboBox fx:id="cmbEstado" layoutX="356.0" layoutY="311.0" onAction="#actEstado" prefHeight="25.0" prefWidth="238.0" />
       <Label fx:id="lblFechaCreacion" alignment="CENTER_RIGHT" layoutX="431.0" layoutY="369.0" prefHeight="17.0" prefWidth="163.0" text="Fecha" />
       <Label fx:id="lblFechaModificacion" alignment="CENTER_RIGHT" layoutX="431.0" layoutY="415.0" prefHeight="17.0" prefWidth="163.0" text="Fecha" />
-      <Button fx:id="btnCancelar" layoutX="174.0" layoutY="460.0" mnemonicParsing="false" onAction="#actAtras" prefHeight="25.0" prefWidth="87.0" text="Cancelar" />
-      <Button fx:id="btnGuardar" layoutX="507.0" layoutY="460.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="25.0" prefWidth="87.0" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="173.0" layoutY="460.0" mnemonicParsing="false" onAction="#actAtras" prefHeight="33.0" prefWidth="109.0" text="Cancelar" />
+      <Button fx:id="btnGuardar" layoutX="486.0" layoutY="460.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="33.0" prefWidth="109.0" text="Guardar" />
       <Label layoutX="177.0" layoutY="193.0" text="Valor" />
       <TextField fx:id="txtValor" layoutX="356.0" layoutY="188.0" prefHeight="25.0" prefWidth="238.0" />
       <Label layoutX="177.0" layoutY="252.0" text="Descripción" />
       <TextField fx:id="txtDescripcion" layoutX="357.0" layoutY="235.0" prefHeight="53.0" prefWidth="238.0" />
-      <Button fx:id="btnEliminar" layoutX="420.0" layoutY="460.0" mnemonicParsing="false" onAction="#actEliminar" prefHeight="25.0" prefWidth="87.0" text="Eliminar" />
+      <Button fx:id="btnEliminar" layoutX="336.0" layoutY="460.0" mnemonicParsing="false" onAction="#actEliminar" prefHeight="33.0" prefWidth="109.0" text="Eliminar" />
    </children>
 </AnchorPane>

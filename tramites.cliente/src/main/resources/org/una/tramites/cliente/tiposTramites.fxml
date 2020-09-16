@@ -8,12 +8,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.TiposTramitesController">
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" stylesheets="@estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.TiposTramitesController">
    <children>
       <Label layoutX="82.0" layoutY="37.0" text="Información de Tipos de Trámites" />
-      <TextField fx:id="txtBuscar" layoutX="249.0" layoutY="115.0" prefHeight="25.0" prefWidth="293.0" promptText="Consultar por id, descripcion o departamento" />
-      <Button fx:id="btnBuscar" layoutX="555.0" layoutY="115.0" mnemonicParsing="false" onAction="#actBuscar" text="Buscar" />
-      <Button fx:id="btnBorrar" layoutX="614.0" layoutY="115.0" mnemonicParsing="false" onAction="#actBorrar" text="Borrar" />
+      <TextField fx:id="txtBuscar" layoutX="220.0" layoutY="113.0" prefHeight="37.0" prefWidth="261.0" promptText="Consultar por id, descripcion o departamento" />
+      <Button fx:id="btnBuscar" layoutX="483.0" layoutY="115.0" mnemonicParsing="false" onAction="#actBuscar" text="Buscar" />
+      <Button fx:id="btnBorrar" layoutX="574.0" layoutY="115.0" mnemonicParsing="false" onAction="#actBorrar" text="Borrar" />
       <TableView fx:id="tbTiposTramites" layoutX="82.0" layoutY="162.0" prefHeight="234.0" prefWidth="581.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
@@ -23,8 +23,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnAgregar" layoutX="572.0" layoutY="464.0" mnemonicParsing="false" onAction="#actAgregar" prefHeight="25.0" prefWidth="91.0" text="Agregar" />
-      <Button fx:id="btnCerrar" layoutX="82.0" layoutY="464.0" mnemonicParsing="false" onAction="#actCerrar" prefHeight="25.0" prefWidth="91.0" text="Cerrar" />
-      <ComboBox fx:id="cmbTipoBusqueda" layoutX="82.0" layoutY="115.0" onAction="#actTipoBusqueda" prefWidth="150.0" promptText="Tipo de busqueda" />
+      <Button fx:id="btnAgregar" layoutX="550.0" layoutY="464.0" mnemonicParsing="false" onAction="#actAgregar" prefHeight="33.0" prefWidth="113.0" text="Agregar" />
+      <Button fx:id="btnCerrar" layoutX="82.0" layoutY="464.0" mnemonicParsing="false" onAction="#actCerrar" prefHeight="33.0" prefWidth="113.0" text="Cerrar" />
+      <ComboBox fx:id="cmbTipoBusqueda" layoutX="82.0" layoutY="115.0" onAction="#actTipoBusqueda" prefHeight="25.0" prefWidth="138.0" promptText="Tipo de busqueda" />
    </children>
 </AnchorPane>
