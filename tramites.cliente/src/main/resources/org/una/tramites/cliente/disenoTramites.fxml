@@ -18,22 +18,5 @@
       <ComboBox fx:id="cbxTramite" layoutX="66.0" layoutY="72.0" onAction="#actTramite" prefHeight="25.0" prefWidth="542.0" promptText="Nombre del tramite" />
       <StackPane fx:id="spContenedor" layoutX="66.0" layoutY="154.0" prefHeight="273.0" prefWidth="613.0" />
 
-<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" stylesheets="@estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.DisenoTramitesController">
-   <children>
-      <Label layoutX="66.0" layoutY="55.0" text="Diseño de Trámites" />
-      <TextField fx:id="txtNombre" layoutX="66.0" layoutY="100.0" prefHeight="37.0" prefWidth="423.0" promptText="Nombre del Trámite" />
-      <Button fx:id="btnBuscar" layoutX="489.0" layoutY="102.0" mnemonicParsing="false" onAction="#actBuscar" prefHeight="33.0" prefWidth="95.0" text="Buscar" />
-      <Button fx:id="btnBorrar" layoutX="584.0" layoutY="102.0" mnemonicParsing="false" onAction="#actBorrar" prefHeight="33.0" prefWidth="95.0" text="Borrar" />
-      <TableView fx:id="tbTramite" layoutX="66.0" layoutY="186.0" prefHeight="262.0" prefWidth="613.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
-      <Button fx:id="btnVariaciones" layoutX="204.0" layoutY="153.0" mnemonicParsing="false" onAction="#actVerVariaciones" prefHeight="33.0" prefWidth="138.0" text="Variaciones" />
-      <Button fx:id="btnRequisitos" layoutX="66.0" layoutY="153.0" mnemonicParsing="false" onAction="#actVerRequisitos" prefHeight="33.0" prefWidth="138.0" text="Requisitos" />
-      <Button fx:id="btnCancelar" layoutX="66.0" layoutY="464.0" mnemonicParsing="false" onAction="#actCancelar" prefHeight="33.0" prefWidth="119.0" text="Cancelar" />
-      <Button fx:id="btnGuardar" layoutX="569.0" layoutY="464.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="33.0" prefWidth="111.0" text="Guardar" />
-
    </children>
 </AnchorPane>

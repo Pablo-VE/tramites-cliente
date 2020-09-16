@@ -49,6 +49,8 @@ public class DisenoTramitesController implements Initializable {
     private ComboBox<TramiteTipoDTO> cbxTramite;
     @FXML
     private StackPane spContenedor;
+    @FXML
+    private Button btnBuscar;
 
     /**
      * Initializes the controller class.
@@ -112,6 +114,10 @@ public class DisenoTramitesController implements Initializable {
         selecciono=true;
         AppContext.getInstance().set("tramiteTipo", cbxTramite.getValue());
         tramiteTipo=(TramiteTipoDTO) AppContext.getInstance().get("tramiteTipo");
+    }
+
+    @FXML
+    private void actBuscar(ActionEvent event) {
     }
     
 }
