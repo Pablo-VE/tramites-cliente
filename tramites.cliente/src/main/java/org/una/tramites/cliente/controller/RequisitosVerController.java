@@ -58,7 +58,7 @@ public class RequisitosVerController implements Initializable {
 
     @FXML
     private void actAgregar(ActionEvent event) throws IOException {
-        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+        StackPane Contenedor = (StackPane) AppContext.getInstance().get("ContenedorDisenoTramite");
         AppContext.getInstance().set("ModalidadParametros", "Agregar");
         
         Parent root = FXMLLoader.load(App.class.getResource("requisitosAgregar" + ".fxml"));
