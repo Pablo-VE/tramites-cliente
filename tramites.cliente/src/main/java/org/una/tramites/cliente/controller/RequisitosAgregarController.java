@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import org.una.tramites.cliente.util.AppContext;
 
 /**
  * FXML Controller class
@@ -24,7 +26,7 @@ public class RequisitosAgregarController implements Initializable {
     @FXML
     private TextField txtDescripcion;
     @FXML
-    private ComboBox<?> cmbEstado;
+    private ComboBox<String> cmbEstado;
     @FXML
     private Button btnGuardar;
     @FXML
@@ -36,6 +38,8 @@ public class RequisitosAgregarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        cmbEstado.getItems().add("Activo");
+        cmbEstado.getItems().add("Inactivo");
     }    
 
     @FXML
