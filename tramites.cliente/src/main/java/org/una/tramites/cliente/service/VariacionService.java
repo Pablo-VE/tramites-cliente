@@ -141,4 +141,20 @@ public class VariacionService {
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }
+     
+      public Respuesta getByTramiteTipo(Long id){
+        try{
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("id", id);
+            Request request = new Request("variaciones/tipostramites", "/{id}", parametros);
+            request.get();
+            if(request.isError()){
+                return new Respuesta(false, request.getError(), "Error al obtener los requisitos por variacion");
+            }
+            List<VariacionDTO> result = (List<VariacionDTO>) request.readEntity(new GenericType<List<VariacionDTO>>(){});
+            return new Respuesta(true, "Variaciones",result);
+        }catch(Exception ex){
+            return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
+        }
+    }
 }
