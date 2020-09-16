@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="apVariaciones" prefHeight="298.0" prefWidth="613.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.una.tramites.cliente.controller.VariacionesController">
+<AnchorPane id="AnchorPane" fx:id="apVariaciones" prefHeight="298.0" prefWidth="613.0" stylesheets="@estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.VariacionesController">
    <children>
       <TableView fx:id="tvVariaciones" layoutX="17.0" layoutY="56.0" prefHeight="230.0" prefWidth="575.0">
         <columns>
@@ -16,7 +15,7 @@
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregarVariacion" layoutX="496.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Agregar" />
+      <Button fx:id="btnAgregarVariacion" layoutX="465.0" layoutY="20.0" mnemonicParsing="false" onAction="#actAgregar" prefHeight="33.0" prefWidth="127.0" text="Agregar" />
       <Label layoutX="17.0" layoutY="22.0" text="Variaciones">
          <font>
             <Font size="15.0" />

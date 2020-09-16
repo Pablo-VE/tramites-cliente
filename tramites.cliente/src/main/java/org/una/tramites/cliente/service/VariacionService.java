@@ -56,6 +56,7 @@ public class VariacionService {
             Request request = new Request("variaciones/");
             request.post(variacion);
             if(request.isError()){
+                System.out.println(request.getError());
                 return new Respuesta(false, request.getError(), "No se pudo guardar la variacion");
             }
             VariacionDTO result = (VariacionDTO) request.readEntity(VariacionDTO.class);

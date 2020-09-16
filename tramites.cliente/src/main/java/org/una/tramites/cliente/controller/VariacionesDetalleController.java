@@ -64,7 +64,9 @@ public class VariacionesDetalleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     tramiteTipo=(TramiteTipoDTO) AppContext.getInstance().get("tramiteTipo");
-    
+    cbxGrupo.getItems().add(1);
+    cbxGrupo.getItems().add(2);
+    cbxGrupo.getItems().add(3);
     cbxEstado.getItems().add("Activo");
         cbxEstado.getItems().add("Inactivo");
         modalidad = (String) AppContext.getInstance().get("ModalidadVariacion");
@@ -141,7 +143,7 @@ public class VariacionesDetalleController implements Initializable {
                     Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Registro de variaciones", "Se agrego la variacion correctamente");
                     irRequisitos();
                 }else{
-                     Mensaje.showAndWait(Alert.AlertType.ERROR, "Registro de permiso", res.getMensaje());
+                     Mensaje.showAndWait(Alert.AlertType.ERROR, "Registro de variacion", res.getMensajeInterno());
                 }
             }else{
                 if(modalidad.equals("Modificar")){
