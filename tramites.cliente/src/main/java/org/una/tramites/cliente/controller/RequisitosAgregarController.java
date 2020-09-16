@@ -137,7 +137,7 @@ public class RequisitosAgregarController implements Initializable {
     }
     
     private void irRequisitos() throws IOException{
-        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+        StackPane Contenedor = (StackPane) AppContext.getInstance().get("ContenedorDisenoTramite");
             Parent root = FXMLLoader.load(App.class.getResource("requisitosVer" + ".fxml")); //Revisar si la direccion esta bien
             Contenedor.getChildren().clear();
             Contenedor.getChildren().add(root);

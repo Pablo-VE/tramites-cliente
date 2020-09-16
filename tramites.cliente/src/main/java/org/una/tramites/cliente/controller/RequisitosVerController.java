@@ -29,6 +29,7 @@ import javafx.util.Callback;
 import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.DepartamentoDTO;
 import org.una.tramites.cliente.dto.RequisitoDTO;
+import org.una.tramites.cliente.dto.VariacionDTO;
 import org.una.tramites.cliente.service.RequisitoService;
 import org.una.tramites.cliente.util.AppContext;
 import org.una.tramites.cliente.util.Mensaje;
@@ -52,8 +53,15 @@ public class RequisitosVerController implements Initializable {
     RequisitoService reqService = new RequisitoService();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        VariacionDTO var = (VariacionDTO) AppContext.getInstance().get("VariacionSeleccionada");
+        
+        if(var!=null){
+            cargarRequisitos(var.getId());
+        }
+
         // TODO
-        cargarRequisitos();
+        
     }    
 
     @FXML
@@ -65,10 +73,10 @@ public class RequisitosVerController implements Initializable {
         Contenedor.getChildren().clear();
         Contenedor.getChildren().add(root);
     }
-    public void cargarRequisitos(){
+    public void cargarRequisitos(Long id){
         ArrayList<RequisitoDTO> requisitos = new ArrayList<RequisitoDTO>();
-        //Respuesta res = reqService.getByVariacion();
-        //requisitos=(ArrayList<RequisitoDTO>) res.getResultado("Requisitos");
+        Respuesta res = reqService.getByVariacion(id);
+        requisitos=(ArrayList<RequisitoDTO>) res.getResultado("Requisitos");
         llenarTabla(requisitos);
     }
     public void llenarTabla(ArrayList<RequisitoDTO> requisitos){
@@ -158,7 +166,7 @@ public class RequisitosVerController implements Initializable {
     }
     public void  ver(RequisitoDTO dep) throws IOException{
         if(dep!=null){
-            StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+            StackPane Contenedor = (StackPane) AppContext.getInstance().get("ContenedorDisenoTramite");
 
             AppContext.getInstance().set("ModalidadRequisitos", "Ver");
             AppContext.getInstance().set("RequisitoVer", dep);
@@ -171,7 +179,7 @@ public class RequisitosVerController implements Initializable {
         }
     }
     public void editarRequisito(RequisitoDTO req) throws IOException{
-        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+        StackPane Contenedor = (StackPane) AppContext.getInstance().get("ContenedorDisenoTramite");
         
         AppContext.getInstance().set("ModalidadRequisitos", "Editar");
         AppContext.getInstance().set("RequisitoEditar", req);
