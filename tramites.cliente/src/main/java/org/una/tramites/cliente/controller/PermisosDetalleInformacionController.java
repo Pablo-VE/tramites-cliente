@@ -66,6 +66,8 @@ public class PermisosDetalleInformacionController implements Initializable {
     PermisoDTO permisoEditar = new PermisoDTO();
     @FXML
     private Label labelModificacion;
+    @FXML
+    private Button btnEliminar;
 
     
     /**
@@ -84,7 +86,9 @@ public class PermisosDetalleInformacionController implements Initializable {
         estados.add("Inactivo");
         cmbEstado.getItems().clear();
         cmbEstado.getItems().addAll(estados);
-        
+        if(!modalidad.equals("Ver")){
+            btnEliminar.setVisible(false);
+        }
         
         if(modalidad.equals("Modificar")){
             permisoEditar = (PermisoDTO) AppContext.getInstance().get("PermisoEnCuestion");
@@ -203,6 +207,24 @@ public class PermisosDetalleInformacionController implements Initializable {
             Contenedor.getChildren().add(root);
         }catch(Exception ex){
             
+        }
+    }
+
+    @FXML
+    private void actEliminar(ActionEvent event) {
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setContentText("¿Está seguro que desea eliminar este elemento?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try{
+                perService.delete(permisoEditar.getId());
+                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Eliminar Permiso", "Se ha eliminado el permiso exitosamente");
+                irPermisos();
+            }catch(Exception e){
+            }
         }
     }
 }

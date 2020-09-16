@@ -208,6 +208,8 @@ public class PermisosController implements Initializable {
 
     @FXML
     private void actCerrar(ActionEvent event) {
+        StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+        Contenedor.getChildren().clear();
     }
 
 

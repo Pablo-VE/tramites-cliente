@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.TiposTramitesDetalleInformacionController">
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="745.0" stylesheets="@estilo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.TiposTramitesDetalleInformacionController">
    <children>
       <Label layoutX="130.0" layoutY="55.0" text="Información de Tipos de Trámites" />
       <Label layoutX="135.0" layoutY="239.0" text="Estado:" />
@@ -18,10 +18,11 @@
       <Label layoutX="135.0" layoutY="400.0" text="Última modificación:" />
       <ComboBox fx:id="cmbEstado" layoutX="383.0" layoutY="235.0" onAction="#actEstado" prefHeight="25.0" prefWidth="238.0" />
       <Label fx:id="lblFechaModificacion" alignment="CENTER_RIGHT" layoutX="357.0" layoutY="400.0" prefHeight="17.0" prefWidth="264.0" text="Fecha" />
-      <Button fx:id="btnCancelar" layoutX="132.0" layoutY="458.0" mnemonicParsing="false" onAction="#actCancelar" prefHeight="25.0" prefWidth="87.0" text="Cancelar" />
-      <Button fx:id="btnGuardar" layoutX="534.0" layoutY="458.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="25.0" prefWidth="87.0" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="132.0" layoutY="458.0" mnemonicParsing="false" onAction="#actCancelar" prefHeight="33.0" prefWidth="112.0" text="Cancelar" />
+      <Button fx:id="btnGuardar" layoutX="509.0" layoutY="458.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="33.0" prefWidth="112.0" text="Guardar" />
       <Label fx:id="lblFechaCreacion" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="357.0" layoutY="354.0" prefHeight="17.0" prefWidth="264.0" text="Fecha" />
       <Label layoutX="135.0" layoutY="297.0" text="Departamento:" />
       <ComboBox fx:id="cmbDepartamento" layoutX="383.0" layoutY="293.0" onAction="#actDepartamento" prefHeight="25.0" prefWidth="238.0" />
+      <Button fx:id="btnEliminar" layoutX="322.0" layoutY="458.0" mnemonicParsing="false" onAction="#actEliminar" prefHeight="33.0" prefWidth="101.0" text="Eliminar" />
    </children>
 </AnchorPane>

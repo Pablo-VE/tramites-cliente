@@ -1,57 +1,57 @@
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\ClienteDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\RequisitoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\DashboardController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\PermisoOtorgadoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\Request.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\DepartamentoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\ArchivoRelacionadoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TransaccionDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\PermisoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosContrasenaController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\DepartamentoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\PermisosController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\TiposTramitesController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\PermisoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TransaccionService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TramiteRegistradoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TramiteEstadoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\ArchivoRelacionadoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\ParametrosController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\RequisitoPresentadoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\VariacionService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TramiteCambioEstadoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\UsuarioService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\PermisosTableView.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\AuthenticationRequest.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\RequisitoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\NotaService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\ParametrosGeneralesDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\AutoCompleteComboBoxListener.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\ParametrosDetalleInformacionController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\PermisosDetalleInformacionController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\UsuarioDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosAutorizacionesController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TramiteTipoDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TramiteCambioEstadoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TramiteEstadoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\DepartamentosController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\DepartamentosDetalleInformacionController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TramiteRegistradoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\App.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\VariacionDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\ClienteService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\DisenoTramitesController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\ParametrosGeneralesService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TramiteTipoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosPrincipalController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\AuthenticationResponse.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\Respuesta.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\AppContext.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosInformacionController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\TiposTramitesDetalleInformacionController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\RequisitoPresentadoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\NotaDTO.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\PermisoOtorgadoService.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\LoginController.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\Mensaje.java
-C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TramiteEstadoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\NotaService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\TiposTramitesController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\NotaDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\PermisoOtorgadoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TransaccionService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\DepartamentosDetalleInformacionController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\DepartamentoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\LoginController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\Request.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\PermisoOtorgadoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\PermisoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\ClienteDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\DepartamentoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TransaccionDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TramiteTipoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\AutoCompleteComboBoxListener.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TramiteRegistradoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosContrasenaController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\AuthenticationRequest.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\AuthenticationResponse.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TramiteRegistradoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\Mensaje.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\PermisosDetalleInformacionController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\RequisitoPresentadoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\VariacionService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\DepartamentosController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TramiteEstadoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TramiteTipoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\ParametrosController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\RequisitoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\ParametrosGeneralesService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\TramiteCambioEstadoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\DisenoTramitesController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosInformacionController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TramiteCambioEstadoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosAutorizacionesController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\RequisitoPresentadoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\DashboardController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\PermisoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\VariacionDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosPrincipalController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\ArchivoRelacionadoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\ClienteService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\AppContext.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\PermisosController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\ArchivoRelacionadoService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\PermisosTableView.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\TiposTramitesDetalleInformacionController.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\ParametrosGeneralesDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\RequisitoDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\util\Respuesta.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\UsuarioService.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\App.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\UsuarioDTO.java
+C:\Users\jeffr\Desktop\UNA\2020\II Semestre\Programación III\Avances Proyecto Clase\Cliente\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\ParametrosDetalleInformacionController.java

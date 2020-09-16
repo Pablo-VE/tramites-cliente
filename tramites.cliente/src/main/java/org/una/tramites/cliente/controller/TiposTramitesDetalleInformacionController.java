@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -23,6 +24,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.DepartamentoDTO;
 import org.una.tramites.cliente.dto.TramiteTipoDTO;
@@ -55,6 +57,9 @@ public class TiposTramitesDetalleInformacionController implements Initializable 
     private Button btnCancelar;
     @FXML
     private Button btnGuardar;
+    @FXML
+    private Button btnEliminar;
+    
     private String modalidad;
 
     /**
@@ -64,13 +69,16 @@ public class TiposTramitesDetalleInformacionController implements Initializable 
     TramiteTipoDTO tramiteTipoEditar = new TramiteTipoDTO();
     DepartamentoService depService = new DepartamentoService();
     DepartamentoDTO departamento = new DepartamentoDTO();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         modalidad = (String) AppContext.getInstance().get("ModalidadTramitesTipos");
         
         txtId.setDisable(true);
         llenarComboBox();
-       
+        if(!modalidad.equals("Ver")){
+            btnEliminar.setVisible(false);
+        }
         if(modalidad.equals("Agregar")){
             txtId.setVisible(false);
         }else{
@@ -230,6 +238,24 @@ public class TiposTramitesDetalleInformacionController implements Initializable 
             deps.add(d.getNombre())
         );
         cmbDepartamento.getItems().addAll(deps);
+    }
+
+    @FXML
+    private void actEliminar(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setContentText("¿Está seguro que desea eliminar este elemento?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try{
+                tramService.delete(tramiteTipoEditar.getId());
+                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Eliminar Trámite", "Se ha eliminado el trámite exitosamente");
+                irTiposTramites();
+            }catch(Exception e){
+            }
+        }
+        
     }
     
 }

@@ -62,6 +62,8 @@ public class ParametrosDetalleInformacionController implements Initializable {
     private TextField txtDescripcion;
     @FXML
     private Label LabelId;
+    @FXML
+    private Button btnEliminar;
     /**
      * Initializes the controller class.
      */
@@ -79,7 +81,10 @@ public class ParametrosDetalleInformacionController implements Initializable {
         estados.add("Inactivo");
         cmbEstado.getItems().clear();
         cmbEstado.getItems().addAll(estados);
-        
+        if(!modalidad.equals("Ver")){
+           btnEliminar.setVisible(false);
+        }
+
         
         if(modalidad.equals("Modificar")){
             permisoEditar = (ParametrosGeneralesDTO) AppContext.getInstance().get("ParametroEnCuestion");
@@ -205,6 +210,23 @@ public class ParametrosDetalleInformacionController implements Initializable {
             Contenedor.getChildren().add(root);
         }catch(Exception ex){
             
+        }
+    }
+
+    @FXML
+    private void actEliminar(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setContentText("¿Está seguro que desea eliminar este elemento?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try{
+                perService.delete(permisoEditar.getId());
+                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Eliminar Parámetro", "Se ha eliminado el parámetro exitosamente");
+                irPermisos();
+            }catch(Exception e){
+            }
         }
     }
 

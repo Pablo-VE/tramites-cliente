@@ -285,5 +285,6 @@ public class DepartamentosController implements Initializable {
         StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
         Contenedor.getChildren().clear();
     }
-    
+
+
 }

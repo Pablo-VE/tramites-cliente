@@ -18,8 +18,14 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import java.util.Date;
+import java.util.Optional;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.DepartamentoDTO;
 import org.una.tramites.cliente.dto.UsuarioDTO;
 import org.una.tramites.cliente.service.DepartamentoService;
@@ -64,6 +70,8 @@ public class UsuariosInformacionController implements Initializable {
     ArrayList<DepartamentoDTO> departamentos = new ArrayList<>();
     @FXML
     private Button btnGuardar;
+    @FXML
+    private Button btnEliminar;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -87,6 +95,10 @@ public class UsuariosInformacionController implements Initializable {
         new AutoCompleteComboBoxListener<>(cbxDepartamento); 
         
         
+        if(!modalidad.equals("Ver")){
+              btnEliminar.setVisible(false);
+        }
+
         
         if(modalidad.equals("Ver")||modalidad.equals("Modificar")){
             usuario = (UsuarioDTO) AppContext.getInstance().get("UsuarioEnCuestion");
@@ -237,6 +249,26 @@ public class UsuariosInformacionController implements Initializable {
             return false;
         }
         return true;
+    }
+
+    @FXML
+    private void actEliminar(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setContentText("¿Está seguro que desea eliminar este elemento?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try{
+                usuService.deleteUsuario(usuario.getId());
+                Mensaje.showAndWait(Alert.AlertType.INFORMATION, "Eliminar Usuario", "Se ha eliminado el usuario exitosamente");
+                StackPane Contenedor = (StackPane) AppContext.getInstance().get("Contenedor");
+                Parent root = FXMLLoader.load(App.class.getResource("usuariosPrincipal" + ".fxml"));
+                Contenedor.getChildren().clear();
+                Contenedor.getChildren().add(root);
+            }catch(Exception e){
+            }
+        }
     }
     
 }
