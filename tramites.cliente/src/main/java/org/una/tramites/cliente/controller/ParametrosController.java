@@ -109,10 +109,11 @@ public class ParametrosController implements Initializable {
             TableColumn colFechaModificacion = new TableColumn("Fecha Modificacion");
             colFechaModificacion.setCellValueFactory(new PropertyValueFactory("fechaModificacion"));
             
-            tablaParametros.getColumns().addAll(colEstado);
+         
             tablaParametros.getColumns().addAll(colId);
             tablaParametros.getColumns().addAll(colNombre);
             tablaParametros.getColumns().addAll(colValor);
+            tablaParametros.getColumns().addAll(colEstado);
             tablaParametros.getColumns().addAll(colDescripcion);
             tablaParametros.getColumns().addAll(colFechaRegistro);
             tablaParametros.getColumns().addAll(colFechaModificacion);
