@@ -11,7 +11,7 @@
       <Label layoutX="14.0" layoutY="14.0" text="Requisitos" />
       <Label layoutX="49.0" layoutY="75.0" text="Descripción:" />
       <TextField fx:id="txtDescripcion" layoutX="169.0" layoutY="67.0" prefHeight="37.0" prefWidth="386.0" />
-      <ComboBox fx:id="cmbEstado" layoutX="49.0" layoutY="137.0" prefHeight="25.0" prefWidth="195.0" promptText="Estado" />
+      <ComboBox fx:id="cmbEstado" layoutX="49.0" layoutY="137.0" onAction="#actEstado" prefHeight="25.0" prefWidth="195.0" promptText="Estado" />
       <Button fx:id="btnGuardar" layoutX="449.0" layoutY="244.0" mnemonicParsing="false" onAction="#actGuardar" prefHeight="33.0" prefWidth="108.0" text="Guardar" />
       <Button fx:id="btnCancelar" layoutX="49.0" layoutY="244.0" mnemonicParsing="false" onAction="#actCancelar" prefHeight="33.0" prefWidth="108.0" text="Cancelar" />
       <Label fx:id="lblFecha" layoutX="49.0" layoutY="205.0" text="Fecha de Registro:" />
