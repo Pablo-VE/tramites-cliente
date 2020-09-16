@@ -14,7 +14,7 @@
       <TextField fx:id="txtBuscar" layoutX="249.0" layoutY="115.0" prefHeight="25.0" prefWidth="293.0" promptText="Consultar por id, nombre o estado" />
       <Button fx:id="btnBuscar" layoutX="555.0" layoutY="115.0" mnemonicParsing="false" onAction="#actBuscar" text="Buscar" />
       <Button fx:id="btnBorrar" layoutX="614.0" layoutY="115.0" mnemonicParsing="false" onAction="#actBorrar" text="Borrar" />
-      <TableView fx:id="tablaParametros" layoutX="82.0" layoutY="162.0" prefHeight="234.0" prefWidth="581.0">
+      <TableView fx:id="tablaParametros" layoutX="4.0" layoutY="162.0" prefHeight="234.0" prefWidth="738.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
