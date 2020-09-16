@@ -17,14 +17,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import org.una.tramites.cliente.App;
 import org.una.tramites.cliente.dto.TramiteTipoDTO;
+import org.una.tramites.cliente.dto.VariacionDTO;
 import org.una.tramites.cliente.service.TramiteTipoService;
 import org.una.tramites.cliente.util.AppContext;
-import org.una.tramites.cliente.util.AutoCompleteComboBoxListener;
 import org.una.tramites.cliente.util.Mensaje;
 import org.una.tramites.cliente.util.Respuesta;
 
@@ -49,8 +47,6 @@ public class DisenoTramitesController implements Initializable {
     private ComboBox<TramiteTipoDTO> cbxTramite;
     @FXML
     private StackPane spContenedor;
-    @FXML
-    private Button btnBuscar;
 
     /**
      * Initializes the controller class.
@@ -96,7 +92,19 @@ public class DisenoTramitesController implements Initializable {
     }
 
     @FXML
-    private void actVerRequisitos(ActionEvent event) {
+    private void actVerRequisitos(ActionEvent event) throws IOException {
+       
+       VariacionDTO va = null;
+       va = (VariacionDTO) AppContext.getInstance().get("VariacionSeleccionada");
+       if(va!=null){
+           System.out.println(va);
+            System.out.println(tramiteTipo.getId());
+            Parent root = FXMLLoader.load(App.class.getResource("requisitosVer" + ".fxml"));
+            spContenedor.getChildren().clear();
+            spContenedor.getChildren().add(root);
+        }else{
+            Mensaje.showAndWait(Alert.AlertType.ERROR, "Requisitos", "Por favor seleccione una variacion");
+        }
     }
 
     @FXML
@@ -116,8 +124,5 @@ public class DisenoTramitesController implements Initializable {
         tramiteTipo=(TramiteTipoDTO) AppContext.getInstance().get("tramiteTipo");
     }
 
-    @FXML
-    private void actBuscar(ActionEvent event) {
-    }
     
 }

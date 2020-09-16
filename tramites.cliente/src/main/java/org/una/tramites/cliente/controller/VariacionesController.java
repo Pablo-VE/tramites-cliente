@@ -10,8 +10,12 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
+import org.una.tramites.cliente.dto.VariacionDTO;
+import org.una.tramites.cliente.util.AppContext;
 
 /**
  * FXML Controller class
@@ -23,7 +27,7 @@ public class VariacionesController implements Initializable {
     @FXML
     private AnchorPane apVariaciones;
     @FXML
-    private TableView<?> tvVariaciones;
+    private TableView<VariacionDTO> tvVariaciones;
     @FXML
     private Button btnAgregarVariacion;
 
@@ -33,6 +37,17 @@ public class VariacionesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        tvVariaciones.setRowFactory(tv -> {
+            TableRow<VariacionDTO> row = new TableRow();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton()==MouseButton.PRIMARY && event.getClickCount()==1){
+                    VariacionDTO var = row.getItem();
+		    AppContext.getInstance().set("VariacionSeleccionada", var);
+                }
+            });
+            return row;
+        });
+
     }    
     
 }

@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="apVariacionesDetalle" prefHeight="298.0" prefWidth="613.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.una.tramites.cliente.controller.VariacionesDetalleController">
+<AnchorPane id="AnchorPane" fx:id="apVariacionesDetalle" prefHeight="298.0" prefWidth="613.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.tramites.cliente.controller.VariacionesDetalleController">
    <children>
       <Label layoutX="27.0" layoutY="32.0" text="Variaciones">
          <font>
@@ -20,13 +19,15 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnCancelar" layoutX="380.0" layoutY="238.0" mnemonicParsing="false" onAction="#actCancelar" prefHeight="15.0" prefWidth="76.0" text="Cancelar" />
-      <ComboBox fx:id="cbxEstado" layoutX="65.0" layoutY="143.0" onAction="#actEstado" prefWidth="150.0" promptText="Estado" />
-      <TextField fx:id="txtDescripcion" layoutX="166.0" layoutY="102.0" prefHeight="25.0" prefWidth="333.0" />
-      <Label layoutX="70.0" layoutY="104.0" text="Descripcion:">
+      <Button fx:id="btnCancelar" layoutX="51.0" layoutY="238.0" mnemonicParsing="false" onAction="#actCancelar" prefHeight="15.0" prefWidth="76.0" text="Cancelar" />
+      <ComboBox fx:id="cbxEstado" layoutX="65.0" layoutY="137.0" onAction="#actEstado" prefWidth="150.0" promptText="Estado" />
+      <TextField fx:id="txtDescripcion" layoutX="166.0" layoutY="83.0" prefHeight="25.0" prefWidth="333.0" />
+      <Label layoutX="70.0" layoutY="85.0" text="Descripcion:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
+      <Button fx:id="btnEliminar" layoutX="269.0" layoutY="238.0" mnemonicParsing="false" onAction="#actEliminar" prefHeight="25.0" prefWidth="76.0" text="Eliminar" />
+      <ComboBox fx:id="cbxGrupo" layoutX="380.0" layoutY="137.0" onAction="#actGrupo" prefWidth="150.0" promptText="Estado" />
    </children>
 </AnchorPane>
