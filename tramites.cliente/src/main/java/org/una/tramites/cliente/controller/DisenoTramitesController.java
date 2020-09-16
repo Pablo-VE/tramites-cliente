@@ -96,7 +96,16 @@ public class DisenoTramitesController implements Initializable {
     }
 
     @FXML
-    private void actVerRequisitos(ActionEvent event) {
+    private void actVerRequisitos(ActionEvent event) throws IOException {
+        if(selecciono){
+            System.out.println(tramiteTipo.getId());
+            Parent root = FXMLLoader.load(App.class.getResource("requisitosVer" + ".fxml"));
+            spContenedor.getChildren().clear();
+            spContenedor.getChildren().add(root);
+        }else{
+            Mensaje.showAndWait(Alert.AlertType.ERROR, "Requisitos", "Por favor seleccione el tramite");
+        }
+        
     }
 
     @FXML

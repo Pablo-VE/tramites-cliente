@@ -114,7 +114,7 @@ public class RequisitoService {
         try{
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("descripcion", descripcion);
-            Request request = new Request("requisitos", "/{descripcion}", parametros);
+            Request request = new Request("requisitos/pordescripcion", "/{descripcion}", parametros);
             request.get();
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "Error al obtener requisitos por su descripcion");
@@ -125,4 +125,19 @@ public class RequisitoService {
             return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
         }
     }
+    /*public Respuesta getByVariacion(Long id){
+        try{
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("varId", id);
+            Request request = new Request("requisitos/usuarios_en_departamento", "/{depaId}", parametros);
+            request.get();
+            if(request.isError()){
+                return new Respuesta(false, request.getError(), "Error al obtener tipos de tramites por departamento");
+            }
+            List<RequisitoDTO> result = (List<RequisitoDTO>) request.readEntity(new GenericType<List<RequisitoDTO>>(){});
+            return new Respuesta(true, "TramitesTipos",result);
+        }catch(Exception ex){
+            return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
+        }
+    }*/
 }
