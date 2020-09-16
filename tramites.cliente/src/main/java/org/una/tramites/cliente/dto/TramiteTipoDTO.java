@@ -93,5 +93,7 @@ public class TramiteTipoDTO {
         this.variaciones = variaciones;
     }
     
-    
+    public String toString(){
+        return descripcion;
+    }
 }

@@ -16,7 +16,7 @@ import javax.json.bind.annotation.JsonbDateFormat;
  */
 public class VariacionDTO {
     private Long id;
-    private boolean grupo;
+    private int grupo;
     private String descripcion;
     private boolean estado;
     @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
@@ -27,7 +27,7 @@ public class VariacionDTO {
     public VariacionDTO() {
     }
 
-    public VariacionDTO(Long id, boolean grupo, String descripcion, boolean estado, Date fechaRegistro, TramiteTipoDTO tramites) {
+    public VariacionDTO(Long id, int grupo, String descripcion, boolean estado, Date fechaRegistro, TramiteTipoDTO tramites) {
         this.id = id;
         this.grupo = grupo;
         this.descripcion = descripcion;
@@ -44,11 +44,11 @@ public class VariacionDTO {
         this.id = id;
     }
 
-    public boolean isGrupo() {
+    public int getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(boolean grupo) {
+    public void setGrupo(int grupo) {
         this.grupo = grupo;
     }
 
@@ -60,7 +60,7 @@ public class VariacionDTO {
         this.descripcion = descripcion;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
