@@ -93,11 +93,13 @@ public class DisenoTramitesController implements Initializable {
 
     @FXML
     private void actVerRequisitos(ActionEvent event) throws IOException {
+
        
        VariacionDTO va = null;
        va = (VariacionDTO) AppContext.getInstance().get("VariacionSeleccionada");
        if(va!=null){
            System.out.println(va);
+        if(selecciono){
             System.out.println(tramiteTipo.getId());
             Parent root = FXMLLoader.load(App.class.getResource("requisitosVer" + ".fxml"));
             spContenedor.getChildren().clear();
@@ -105,6 +107,7 @@ public class DisenoTramitesController implements Initializable {
         }else{
             Mensaje.showAndWait(Alert.AlertType.ERROR, "Requisitos", "Por favor seleccione una variacion");
         }
+    
     }
 
     @FXML

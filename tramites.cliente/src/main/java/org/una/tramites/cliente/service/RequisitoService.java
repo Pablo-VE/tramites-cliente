@@ -53,7 +53,7 @@ public class RequisitoService {
     
         public Respuesta guardar(RequisitoDTO requisito){
         try{
-            Request request = new Request("requisitos");
+            Request request = new Request("requisitos/");
             request.post(requisito);
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "No se pudo guardar el requisito");
@@ -114,10 +114,25 @@ public class RequisitoService {
         try{
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("descripcion", descripcion);
-            Request request = new Request("requisitos", "/{descripcion}", parametros);
+            Request request = new Request("requisitos/pordescripcion", "/{descripcion}", parametros);
             request.get();
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "Error al obtener requisitos por su descripcion");
+            }
+            List<RequisitoDTO> result = (List<RequisitoDTO>) request.readEntity(new GenericType<List<RequisitoDTO>>(){});
+            return new Respuesta(true, "Requisitos",result);
+        }catch(Exception ex){
+            return new Respuesta(false, ex.toString(), "No puedo establecerce conexion con el servidor");
+        }
+    }
+    public Respuesta getByVariacion(Long id){
+        try{
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("id", id);
+            Request request = new Request("requisitos/variacion", "/{id}", parametros);
+            request.get();
+            if(request.isError()){
+                return new Respuesta(false, request.getError(), "Error al obtener los requisitos por variacion");
             }
             List<RequisitoDTO> result = (List<RequisitoDTO>) request.readEntity(new GenericType<List<RequisitoDTO>>(){});
             return new Respuesta(true, "Requisitos",result);
