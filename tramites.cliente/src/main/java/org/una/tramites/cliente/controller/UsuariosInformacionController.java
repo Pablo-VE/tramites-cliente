@@ -92,7 +92,7 @@ public class UsuariosInformacionController implements Initializable {
         }
         
        // cbxDepartamento.getItems().addAll(departamentos);
-        new AutoCompleteComboBoxListener<>(cbxDepartamento); 
+     //   new AutoCompleteComboBoxListener<>(cbxDepartamento); 
         
         
         if(!modalidad.equals("Ver")){

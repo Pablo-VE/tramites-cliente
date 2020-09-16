@@ -33,6 +33,7 @@ public class PermisosTableView {
         this.codigo=permiso.getCodigo();
         this.descripcion=permiso.getCodigo();
         this.select=new CheckBox();
+        modalidad = (String) AppContext.getInstance().get("ModalidadUsuarios");
         autoSeleccion();
         iniciarAccion();
         if(modalidad.equals("Ver")){
@@ -86,7 +87,7 @@ public class PermisosTableView {
     public void iniciarAccion(){
         select.setOnAction((ActionEvent event) -> {
                             try{
-                                System.out.println(permiso.getCodigo());
+                               // System.out.println(permiso.getCodigo());
                                 PermisoDTO data = permiso;
                                 setearPermisosAOtorgar(data);
                                 
@@ -99,9 +100,9 @@ public class PermisosTableView {
     String modalidad;
     public void autoSeleccion(){
         permisosYaOtorgados = (ArrayList<PermisoOtorgadoDTO>) AppContext.getInstance().get("permisosYaOtorgados");
-        modalidad = (String) AppContext.getInstance().get("ModalidadUsuarios");
+        
         UsuarioDTO usu=(UsuarioDTO) AppContext.getInstance().get("UsuarioEnCuestion");
-        if(modalidad.equals("Modificar")){
+        if(modalidad.equals("Modificar")||modalidad.equals("Ver")){
             Respuesta res = perService.getByUsuarioPermiso(usu, permiso);
             if(res.getEstado()){
                 PermisoOtorgadoDTO per =(PermisoOtorgadoDTO) res.getResultado("PermisoOtorgado");
@@ -124,7 +125,7 @@ public class PermisosTableView {
         
         if(permisos_a_otorgar==null){
             permisos_a_otorgar.add(permiso);
-            System.out.println("se agrego primer permiso");
+            System.out.println("Se agrego permiso "+permiso.getCodigo());
         }else{
             boolean esta=false;
             for(int i=0; i<permisos_a_otorgar.size(); i++){
@@ -135,13 +136,14 @@ public class PermisosTableView {
             if(esta){
                 for(int i=0; i<permisos_a_otorgar.size(); i++){
                     if(permisos_a_otorgar.get(i).getId()==permiso.getId()){
+                        System.out.println("Se elimino permiso repetido "+permisos_a_otorgar.get(i).getCodigo());
                         permisos_a_otorgar.remove(i);
-                        System.out.println("se elimino permiso repetido");
+                        
                     }
                 }
             }else{
                 permisos_a_otorgar.add(permiso);
-                System.out.println("se agrega permiso");
+                System.out.println("Se agrego permiso "+permiso.getCodigo());
             }
         }
         AppContext.getInstance().set("permisos_a_otorgar",permisos_a_otorgar);

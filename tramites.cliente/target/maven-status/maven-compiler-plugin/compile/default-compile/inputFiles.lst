@@ -7,6 +7,7 @@ C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\ja
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\ArchivoRelacionadoService.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\VariacionesController.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\TransaccionDTO.java
+C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\RequisitosVerController.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\PermisoDTO.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosContrasenaController.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\DepartamentoService.java
@@ -52,6 +53,7 @@ C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\ja
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\UsuariosInformacionController.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\TiposTramitesDetalleInformacionController.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\RequisitoPresentadoService.java
+C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\RequisitosAgregarController.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\dto\NotaDTO.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\service\PermisoOtorgadoService.java
 C:\Users\Pablo-VE\Documents\GitHub\tramites-cliente\tramites.cliente\src\main\java\org\una\tramites\cliente\controller\LoginController.java

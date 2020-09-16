@@ -95,6 +95,7 @@ public class UsuariosAutorizacionesController implements Initializable {
     @FXML
     private void actGuardar(ActionEvent event) {
         permisos_a_otorgar = (ArrayList<PermisoDTO>) AppContext.getInstance().get("permisos_a_otorgar");
+        permisosOtorgadosUsuario=(ArrayList<PermisoOtorgadoDTO>) AppContext.getInstance().get("permisosYaOtorgados");
         if(modalidad.equals("Agregar")){
             if(permisos_a_otorgar==null){
                 
@@ -204,8 +205,7 @@ public class UsuariosAutorizacionesController implements Initializable {
                                     per=permisosO.get(j);
                                     per.setEstado(true);
                                     perOtorService.modificar(per.getId(), per);
-                                    permisosO.remove(j);
-                                    permisos.remove(i);
+                                    
                                     modificado=true;
                                 }
                             }
@@ -217,7 +217,7 @@ public class UsuariosAutorizacionesController implements Initializable {
                         perN.setUsuario(usu);
                         perN.setPermiso(permisos.get(i));
                         perOtorService.guardar(perN);
-                        permisos.remove(i);
+                        
                     }
                 }else{
                     PermisoOtorgadoDTO perN=new PermisoOtorgadoDTO();
@@ -225,7 +225,7 @@ public class UsuariosAutorizacionesController implements Initializable {
                     perN.setUsuario(usu);
                     perN.setPermiso(permisos.get(i));
                     perOtorService.guardar(perN);
-                    permisos.remove(i);
+                    
                 }
             }
         }
@@ -245,19 +245,25 @@ public class UsuariosAutorizacionesController implements Initializable {
                         per=permisosO.get(i);
                         per.setEstado(false);
                         perOtorService.modificar(per.getId(), per);
-                        permisosO.remove(i);
+                        
                     }
                 }else{
                     PermisoOtorgadoDTO per = new PermisoOtorgadoDTO();
                     per=permisosO.get(i);
                     per.setEstado(false);
                     perOtorService.modificar(per.getId(), per);
-                    permisosO.remove(i);
+                    
                 }
                 
                 
             }
         }
+        permisos_a_otorgar = new ArrayList<>();
+    
+        permisosOtorgadosUsuario = new ArrayList<>();
+        AppContext.getInstance().set("permisosYaOtorgados",permisosOtorgadosUsuario);
+        AppContext.getInstance().set("permisos_a_otorgar",permisos_a_otorgar);
     }
+    
     
 }
