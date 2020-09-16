@@ -53,7 +53,7 @@ public class VariacionService {
     
         public Respuesta guardar(VariacionDTO variacion){
         try{
-            Request request = new Request("variaciones");
+            Request request = new Request("variaciones/");
             request.post(variacion);
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "No se pudo guardar la variacion");

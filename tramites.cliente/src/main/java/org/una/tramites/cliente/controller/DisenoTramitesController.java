@@ -109,6 +109,7 @@ public class DisenoTramitesController implements Initializable {
         }
     
     }
+    }
 
     @FXML
     private void actCancelar(ActionEvent event) {
