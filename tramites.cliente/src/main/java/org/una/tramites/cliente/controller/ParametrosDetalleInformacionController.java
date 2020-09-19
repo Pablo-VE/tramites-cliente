@@ -190,7 +190,7 @@ public class ParametrosDetalleInformacionController implements Initializable {
         }
     }
     
-    private boolean estado;
+    private boolean estado=true;
     @FXML
     private void actEstado(ActionEvent event) {
         

@@ -26,11 +26,11 @@ public class ParametrosGeneralesDTO {
     private Date fechaModificacion;
     private boolean estado;
     
-    private List<ParametrosGeneralesDTO> parametrosGeneral = new ArrayList<>();
+    
     
     public ParametrosGeneralesDTO(){
     }
-    public ParametrosGeneralesDTO(Long id, String nombre, String valor, String descripcion, Date fecharegistro, Date fechaModificacion, boolean estado){
+    public ParametrosGeneralesDTO(Long id, String nombre, String valor, String descripcion, Date fechaRegistro, Date fechaModificacion, boolean estado){
         this.id = id;
         this.nombre = nombre;
         this.valor = valor;
@@ -88,14 +88,6 @@ public class ParametrosGeneralesDTO {
 
     public void setFechaModificacion(java.util.Date fechaModificacion) {
         this.fechaModificacion = (Date) fechaModificacion;
-    }
-    
-    public List<ParametrosGeneralesDTO> getParametrosGeneral() {
-        return parametrosGeneral;
-    }
-
-    public void setParametrosGeneral(List<ParametrosGeneralesDTO> parametrosGeneral) {
-        this.parametrosGeneral = parametrosGeneral;
     }
     
     

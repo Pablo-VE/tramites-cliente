@@ -87,7 +87,7 @@ public class ParametrosGeneralesService {
    
     public Respuesta guardar(ParametrosGeneralesDTO parametro){
         try{
-            Request request = new Request("parametros_generales");
+            Request request = new Request("parametros_generales/");
             request.post(parametro);
             if(request.isError()){
                 return new Respuesta(false, request.getError(), "No se pudo guardar los parametros generales");
